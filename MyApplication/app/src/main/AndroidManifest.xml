@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.dirase.hotelsys">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,6 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,7 +19,13 @@
             </intent-filter>
         </activity>
         <activity android:name=".first" />
-        <activity android:name=".signupactivity"></activity>
+        <activity android:name=".signupactivity" />
+        <activity android:name=".historyActivity" />
+        <activity android:name=".myActivity" />
+        <activity android:name=".hotel_Activity" />
+        <activity android:name=".hotel_detailActivity" />
+        <activity android:name=".room_detail_Activity" />
+        <activity android:name=".history_details_Activity"></activity>
     </application>
 
 </manifest>
