@@ -2,12 +2,14 @@ package com.dirase.hotelsys;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,10 +41,11 @@ import static java.net.Proxy.Type.HTTP;
 public class first extends AppCompatActivity {
 
     private ListView listView;
-    private Button first_button2,first_button3;
-    public static String url = "http://192.168.0.110:8080/findHotelInfo/";
-    public static String url1 = "http://192.168.0.110:8080/findhotelnum/1";
+    private Button first_button2,first_button3,first_search;
     public static String firurl = "http://192.168.0.110:8080/";
+    public  String url = firurl+"findHotelInfo/";
+    public  String url1 = firurl+"findhotelnum/1";
+    private EditText first_edittext;
     private  List<String> mList1 = new ArrayList<>();
     private Context context = first.this;
     private  List<String> mList2 = new ArrayList<>();
@@ -56,8 +59,10 @@ public class first extends AppCompatActivity {
         setContentView(R.layout.activity_first);
         first_button2 = (Button)findViewById(R.id.first_button2);
         first_button3 = (Button)findViewById(R.id.first_button3);
+        first_search = (Button)findViewById(R.id.first_search);
+        first_edittext = (EditText)findViewById(R.id.first_edittext);
         //initList();
-        Thread thread = new Thread(new Runnable() {
+        final Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
                 hotel_num = resultJson1(url1);
@@ -102,6 +107,28 @@ public class first extends AppCompatActivity {
                 startActivity(new Intent(first.this,myActivity.class));
             }
         });
+        first_search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Thread thread1 = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Intent intent = new Intent(first.this,hotel_Activity.class);
+                        int i = resultJson2(firurl+"findhotelbyname/"+first_edittext.getText().toString());
+                        if(i<=hotel_num&&i>0){
+                            intent.putExtra("index",""+i);
+                            Looper.prepare();
+                            startActivity(intent);
+                            Looper.loop();
+                        }
+                        else {
+                            Toast.makeText(first.this,"null",Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+                thread1.start();
+            }
+        });
     }
 
 
@@ -122,6 +149,7 @@ public class first extends AppCompatActivity {
             map.put("name", jsonObject.getString("name"));
             map.put("hotel_phone", jsonObject.getString("hotel_phone"));
             map.put("hotel_room_num", jsonObject.getInt("hotel_room_num"));
+            map.put("num", jsonObject.getString("num"));
         mList1.add(jsonObject.getString("hotel_adress"));
         mList2.add(jsonObject.getString("name"));
         mList3.add(jsonObject.getString("hotel_phone"));
@@ -130,6 +158,29 @@ public class first extends AppCompatActivity {
 //            map.put("id", jsonObject.getInt("id"));
 
             list.add(map);
+        //}
+        return list;
+    }
+
+    private  ArrayList<HashMap<String, Object>> Analysis2(String jsonStr)
+            throws JSONException {
+        /******************* 解析 ***********************/
+        JSONArray jsonArray = null;
+        // 初始化list数组对象
+        ArrayList<HashMap<String, Object>> list = new ArrayList<HashMap<String, Object>>();
+//        jsonArray = new JSONArray(jsonStr);
+        JSONObject jsonObject = new JSONObject(jsonStr);
+        //JSONArray jResult = jsonObject.getJSONArray("");
+        //for (int i = 0; i < jResult.length(); i++) {
+        //JSONObject jsonObject = new JSONObject(jsonStr);
+        // 初始化map数组对象
+        HashMap<String, Object> map = new HashMap<String, Object>();
+        map.put("hotel_adress", jsonObject.getString("hotel_adress"));
+        map.put("name", jsonObject.getString("name"));
+        map.put("hotel_phone", jsonObject.getString("hotel_phone"));
+        map.put("hotel_room_num", jsonObject.getInt("hotel_room_num"));
+        map.put("num", jsonObject.getInt("num"));
+        list.add(map);
         //}
         return list;
     }
@@ -177,6 +228,26 @@ public class first extends AppCompatActivity {
             Log.e("json","error2");
         }
         Log.e("json","hotel_room_num result:"+string);
+        return string;
+    }
+
+    private int  resultJson2(String url) {
+        int string = 0;
+        try {
+            Iterator<HashMap<String, Object>> it=Analysis2(readParse(url)).iterator();
+            while (it.hasNext()) {
+                Map<String, Object> ma = it.next();
+                string = (int) ma.get("num");
+                Log.e("json","result:"+string);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+            Log.e("json","error1");
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.e("json","error2");
+        }
+        Log.e("json","num result:"+string);
         return string;
     }
 

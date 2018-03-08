@@ -16,13 +16,13 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 import static android.icu.lang.UCharacter.GraphemeClusterBreak.L;
-import static com.dirase.hotelsys.first.url;
+import static com.dirase.hotelsys.first.firurl;
 import static java.net.Proxy.Type.HTTP;
 
 public class signupactivity extends AppCompatActivity {
     private EditText signup_username,signup_password1,signup_password2,signup_phone;
     private Button signup_back,signup_register;
-    public String signupurl = "http://192.168.0.110:8080/signup/";
+    public String signupurl = firurl+"signup/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

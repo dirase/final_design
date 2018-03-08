@@ -22,16 +22,18 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+import static com.dirase.hotelsys.first.firurl;
 import static com.dirase.hotelsys.first.readParse;
 import static com.dirase.hotelsys.first.url;
 import static com.dirase.hotelsys.first.url1;
 
 public class MainActivity extends AppCompatActivity {
     private Button login,sign_up;
+    public static String people_num;
 
     private EditText first_password_edittext,first_username_edittext;
     private EditText user_name,user_password;
-    public static String urlfirst = "http://192.168.0.110:8080/finduserinfo/";
+    public  String urlfirst = firurl+"finduserinfo/";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +53,9 @@ public class MainActivity extends AppCompatActivity {
                         stringBuilder.append(first_username_edittext.getText().toString());
                         Log.e("string",stringBuilder.toString());
                         if(first_password_edittext.getText().toString().equals(resultJson1(stringBuilder.toString()))){
-                            startActivity(new Intent(MainActivity.this,first.class));
+                            Intent intent = new Intent(MainActivity.this,first.class);
+                            intent.putExtra("people_num",""+people_num);
+                            startActivity(intent);
                             finish();
                         }
                         else {
@@ -68,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
         sign_up.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this,signupactivity.class));
+               // startActivity(new Intent(MainActivity.this,testActivity.class));
                 finish();
             }
         });
@@ -81,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
             while (it.hasNext()) {
                 Map<String, Object> ma = it.next();
                 string = (String) ma.get("people_password");
+                people_num = (String) ma.get("people_num");
                 Log.e("json","result:"+string);
             }
         } catch (JSONException e) {
@@ -101,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
         JSONObject jsonObject = new JSONObject(jsonStr);
         HashMap<String, Object> map = new HashMap<String, Object>();
         map.put("people_password", jsonObject.getString("people_password"));
+        map.put("people_num", jsonObject.getString("people_num"));
         list.add(map);
         return list;
     }
