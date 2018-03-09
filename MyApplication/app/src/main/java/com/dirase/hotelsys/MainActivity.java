@@ -24,8 +24,6 @@ import java.util.Map;
 
 import static com.dirase.hotelsys.first.firurl;
 import static com.dirase.hotelsys.first.readParse;
-import static com.dirase.hotelsys.first.url;
-import static com.dirase.hotelsys.first.url1;
 
 public class MainActivity extends AppCompatActivity {
     private Button login,sign_up;

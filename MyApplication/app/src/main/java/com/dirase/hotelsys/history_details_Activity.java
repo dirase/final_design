@@ -66,6 +66,13 @@ public class history_details_Activity extends AppCompatActivity {
                 startActivity(intent1);
             }
         });
+        tips_rate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ratedialog dialog = new ratedialog(history_details_Activity.this,i,hotel_num);
+                dialog.show();
+            }
+        });
     }
     private String  resultJson1(String url) {
         String string = "0";
