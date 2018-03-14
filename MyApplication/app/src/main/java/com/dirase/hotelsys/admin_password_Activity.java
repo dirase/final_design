@@ -1,6 +1,5 @@
 package com.dirase.hotelsys;
 
-import android.content.Intent;
 import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,65 +21,55 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+import static com.dirase.hotelsys.R.id.first_password_edittext;
+import static com.dirase.hotelsys.R.id.first_username_edittext;
 import static com.dirase.hotelsys.first.firurl;
-import static com.dirase.hotelsys.first.readParse;
 
-public class MainActivity extends AppCompatActivity {
-    private Button login,sign_up;
-    public static String people_num;
+public class admin_password_Activity extends AppCompatActivity {
+    private EditText psd_name,psd_old_password,psd_new_password1,psd_new_password2;
+    private Button psd_conmfirm;
 
-    private EditText first_password_edittext,first_username_edittext;
-    private EditText user_name,user_password;
-    public  String urlfirst = firurl+"finduserinfo/";
-    private int level =0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-         login = (Button)findViewById(R.id.first_login);
-        sign_up = (Button)findViewById(R.id.first_signup);
-        first_password_edittext = (EditText)findViewById(R.id.first_password_edittext);
-        first_username_edittext = (EditText)findViewById(R.id.first_username_edittext);
-        login.setOnClickListener(new View.OnClickListener() {
+        setContentView(R.layout.activity_admin_password_);
+        psd_name = (EditText)findViewById(R.id.adminpassword_name);
+        psd_old_password = (EditText)findViewById(R.id.adminpassword_old_password);
+        psd_new_password1 = (EditText)findViewById(R.id.adminpassword_new_password1);
+        psd_new_password2 = (EditText)findViewById(R.id.adminpassword_new_password2);
+        psd_conmfirm = (Button)findViewById(R.id.adminpassword_confirm);
+        psd_conmfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Thread thread = new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        StringBuilder stringBuilder = new StringBuilder(urlfirst);
-                        stringBuilder.append(first_username_edittext.getText().toString());
+                        StringBuilder stringBuilder = new StringBuilder(firurl);
+                        stringBuilder.append("finduserinfo/");
+                        stringBuilder.append(psd_name.getText().toString());
                         Log.e("string",stringBuilder.toString());
-                        if(first_password_edittext.getText().toString().equals(resultJson1(stringBuilder.toString()))){
-                            if(level==0){
-                                Intent intent = new Intent(MainActivity.this,first.class);
-                                intent.putExtra("people_num",""+people_num);
-                                startActivity(intent);
-                                finish();
-                            }
-                            else if(level==1){
-                                startActivity(new Intent(MainActivity.this,tips_detailsActivity.class));
-                                finish();
-                            }
+                        if(psd_old_password.getText().toString().equals(resultJson1(stringBuilder.toString()))){
+                          if (psd_new_password1.getText().toString().equals(psd_new_password2.getText().toString())){
+                              try {
+                                  if("OK".equals(readParse(firurl+"changepsd/"+psd_name.getText().toString()+"-"+psd_new_password1.getText().toString()))){
+                                      finish();
+                                  }
+                              } catch (Exception e) {
+                                  e.printStackTrace();
+                              }
+                          }
                         }
                         else {
                             Looper.prepare();
-                            Toast.makeText(MainActivity.this,"Wrong password or username",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(admin_password_Activity.this,"please confirm password",Toast.LENGTH_SHORT).show();
                             Looper.loop();
                         }
                     }
                 });
                 thread.start();
+            }
+        });
 
-            }
-        });
-        sign_up.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-               // startActivity(new Intent(MainActivity.this,testActivity.class));
-                finish();
-            }
-        });
     }
 
     private String  resultJson1(String url) {
@@ -90,8 +79,6 @@ public class MainActivity extends AppCompatActivity {
             while (it.hasNext()) {
                 Map<String, Object> ma = it.next();
                 string = (String) ma.get("people_password");
-                people_num = (String) ma.get("people_num");
-                level = (int)ma.get("people_level");
                 Log.e("json","result:"+string);
             }
         } catch (JSONException e) {
@@ -112,8 +99,6 @@ public class MainActivity extends AppCompatActivity {
         JSONObject jsonObject = new JSONObject(jsonStr);
         HashMap<String, Object> map = new HashMap<String, Object>();
         map.put("people_password", jsonObject.getString("people_password"));
-        map.put("people_num", jsonObject.getString("people_num"));
-        map.put("people_level", jsonObject.getInt("people_level"));
         list.add(map);
         return list;
     }

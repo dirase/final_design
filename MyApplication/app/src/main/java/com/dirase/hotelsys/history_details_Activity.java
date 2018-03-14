@@ -82,7 +82,7 @@ public class history_details_Activity extends AppCompatActivity {
                 Map<String, Object> ma = it.next();
                 Looper.prepare();
                 start_time.setText( (String)ma.get("tips_time_start"));
-                end_time.setText( (String)ma.get("tips_time_end"));
+                end_time.setText( (String)ma.get("tips_time_stop"));
                 tips_num.setText( (String)ma.get("tips_num"));
                 tips_room.setText( (String)ma.get("tips_room"));
                 tips_hotel.setText( (String)ma.get("tips_hotel"));

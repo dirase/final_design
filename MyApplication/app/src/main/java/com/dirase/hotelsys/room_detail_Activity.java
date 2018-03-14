@@ -5,6 +5,7 @@ import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -26,6 +27,7 @@ import static com.dirase.hotelsys.first.firurl;
 public class room_detail_Activity extends AppCompatActivity {
     private TextView room_name,room_level,room_used;
     private Button purchase;
+    private String hotel="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,12 +48,23 @@ public class room_detail_Activity extends AppCompatActivity {
         });
         thread.start();
 
+        purchase.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent1 = new Intent(room_detail_Activity.this,testActivity.class);
+                intent1.putExtra("index",i);
+                intent1.putExtra("hotel",hotel);
+                startActivity(intent1);
+            }
+        });
+
     }
     private void  resultJson1(String url) {
         try {
             Iterator<HashMap<String, Object>> it=Analysis1(readParse(url)).iterator();
             while (it.hasNext()) {
                 Map<String, Object> ma = it.next();
+                hotel = (String)ma.get("from_hotel");
                 Looper.prepare();
                 room_name.setText((String)ma.get("room_name"));
                 room_level.setText((String)ma.get("room_used"));
@@ -75,6 +88,7 @@ public class room_detail_Activity extends AppCompatActivity {
         map.put("room_name", jsonObject.getString("room_name"));
         map.put("room_used", jsonObject.getString("room_used"));
         map.put("hotel_level", jsonObject.getString("hotel_level"));
+        map.put("from_hotel", jsonObject.getString("from_hotel"));
         list.add(map);
         return list;
     }

@@ -27,7 +27,10 @@
         <activity android:name=".room_detail_Activity" />
         <activity android:name=".history_details_Activity" />
         <activity android:name=".testActivity" />
-        <activity android:name=".tips_detailsActivity"></activity>
+        <activity android:name=".tips_detailsActivity" />
+        <activity android:name=".admin_hotel_Activity" />
+        <activity android:name=".admin_people_Activity" />
+        <activity android:name=".admin_password_Activity"></activity>
     </application>
 
 </manifest>

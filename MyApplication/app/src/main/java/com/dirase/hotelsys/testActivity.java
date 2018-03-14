@@ -1,27 +1,80 @@
 package com.dirase.hotelsys;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
+import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.Toast;
+
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.Calendar;
 
+import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
+import static com.dirase.hotelsys.MainActivity.people_num;
+import static com.dirase.hotelsys.first.firurl;
+
 public class testActivity extends AppCompatActivity {
-    private Button btn;
+    private Button btn,btn2,confirm;
     private int year, month, day;
+    private String i = "";
+    private String date2,date1,hotel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
         btn = (Button) findViewById(R.id.btn);
+        btn2=(Button)findViewById(R.id.btn2);
+        confirm = (Button)findViewById(R.id.btn_confirm);
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        final String i = bundle.getString("index");
+        hotel = bundle.getString("hotel");
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                date();
+                datePickerDialog1();
+            }
+        });
+
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 date();
                 datePickerDialog();
+            }
+        });
+
+        confirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Thread thread = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            if("OK".equals(readParse(firurl+"addtips/"+date1+"-"+date2+"-"+i+"-"+hotel+"-"+people_num))){
+                                finish();
+                            }
+                            else {
+                                Looper.prepare();
+                                Toast.makeText(testActivity.this,"error",Toast.LENGTH_SHORT).show();
+                                Looper.loop();
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+                thread.start();
             }
         });
     }
@@ -30,8 +83,18 @@ public class testActivity extends AppCompatActivity {
         new DatePickerDialog(testActivity.this, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int monthOfYear, int dayOfMonth) {
-                String date = String.format("%d-%d-%d", year, monthOfYear, dayOfMonth);
-                btn.setText(date);
+                 date2 = String.format("%d%d%d", year, monthOfYear, dayOfMonth);
+                btn.setText(date2);
+            }
+        }, year, month, day).show();
+    }
+
+    private void datePickerDialog1() {
+        new DatePickerDialog(testActivity.this, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int monthOfYear, int dayOfMonth) {
+                date1 = String.format("%d%d%d", year, monthOfYear, dayOfMonth);
+                btn2.setText(date1);
             }
         }, year, month, day).show();
     }
@@ -46,5 +109,21 @@ public class testActivity extends AppCompatActivity {
         //日
         day = c.get(Calendar.DAY_OF_MONTH);
 
+    }
+
+    public static String readParse(String urlPath) throws Exception {
+        ByteArrayOutputStream outStream = new ByteArrayOutputStream();
+        byte[] data = new byte[1024];
+        int len = 0;
+        URL url = new URL(urlPath);
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        conn.connect();
+        InputStream inStream = conn.getInputStream();
+        while ((len = inStream.read(data)) != -1) {
+            outStream.write(data, 0, len);
+        }
+        inStream.close();
+        Log.e("json",new String(outStream.toByteArray()));
+        return new String(outStream.toByteArray());//通过out.Stream.toByteArray获取到写的数据
     }
 }
