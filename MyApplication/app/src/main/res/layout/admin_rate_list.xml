@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:layout_weight="7">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_weight="3"
+        android:id="@+id/rate_text1"
+        android:text="hotel"
+        android:textSize="18dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_weight="3"
+        android:id="@+id/rate_text2"
+        android:text="room"
+        android:textSize="18dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_weight="3"
+        android:id="@+id/rate_text3"
+        android:text="star"
+        android:textSize="18dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_weight="1"
+        android:scrollbars="vertical"
+        android:maxLines="99999"
+        android:text="rate text"
+        android:id="@+id/rate_text4"
+        android:textSize="18dp"
+        android:scrollbarStyle="outsideOverlay"
+        android:scrollbarFadeDuration="2000"
+        />
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_weight="3"
+        android:id="@+id/rate_delete"
+        android:text="delete"/>
+
+</LinearLayout>

@@ -27,12 +27,7 @@
             android:id="@+id/admin_hotel_info"
             android:text="information"
             android:inputType="text"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/admin_hotel_room_num"
-            android:text="room num"
-            android:inputType="number"/>
+
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -1,5 +1,6 @@
 package com.dirase.hotelsys;
 
+import android.content.Intent;
 import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,35 +17,49 @@ import java.net.URL;
 
 import static com.dirase.hotelsys.first.firurl;
 
-public class admin_people_Activity extends AppCompatActivity {
-    private EditText user_name;
-    private Button delete;
+public class admin_add_room_Activity extends AppCompatActivity {
+    private Button back,add;
+    private EditText room_name,room_level,room_info;
+    private String i ="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_people_);
-        user_name = (EditText)findViewById(R.id.admin_people_name);
-        delete = (Button)findViewById(R.id.admin_people_delete);
-        delete.setOnClickListener(new View.OnClickListener() {
+        setContentView(R.layout.activity_admin_add_room_);
+        back = (Button)findViewById(R.id.admin_add_room_back);
+        add = (Button)findViewById(R.id.admin_room_add);
+        room_name = (EditText)findViewById(R.id.admin_room_name);
+        room_level = (EditText)findViewById(R.id.admin_room_level);
+        room_info = (EditText)findViewById(R.id.admin_add_room_info);
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        i = bundle.getString("index");
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+        add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Thread thread = new Thread(new Runnable() {
                     @Override
                     public void run() {
                         try {
-                            if("OK".equals(readParse(firurl+"deletepeople/"+user_name.getText().toString()))){
-                                finish();
-                            }
-                            else {
+                            if("OK".equals(readParse(firurl+"addroom/"+room_name.getText().toString()+"-"+room_level.getText().toString()+"-"+room_info.getText().toString()+"-"+i))){
                                 Looper.prepare();
-                                Toast.makeText(admin_people_Activity.this,"error",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(admin_add_room_Activity.this,"success",Toast.LENGTH_SHORT).show();
+                                room_name.setText("");
+                                room_level.setText("");
+                                room_info.setText("");
                                 Looper.loop();
                             }
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
                     }
+
                 });
                 thread.start();
             }

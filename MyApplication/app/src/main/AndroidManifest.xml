@@ -30,7 +30,9 @@
         <activity android:name=".tips_detailsActivity" />
         <activity android:name=".admin_hotel_Activity" />
         <activity android:name=".admin_people_Activity" />
-        <activity android:name=".admin_password_Activity"></activity>
+        <activity android:name=".admin_password_Activity" />
+        <activity android:name=".admin_add_room_Activity" />
+        <activity android:name=".admin_rateActivity"></activity>
     </application>
 
 </manifest>

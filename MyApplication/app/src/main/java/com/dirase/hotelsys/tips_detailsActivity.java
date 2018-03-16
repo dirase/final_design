@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class tips_detailsActivity extends AppCompatActivity {
-    private Button hotel,people,psd;
+    private Button hotel,people,psd,rate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,6 +16,7 @@ public class tips_detailsActivity extends AppCompatActivity {
         hotel = (Button)findViewById(R.id.tipsdetails_hotel);
         people = (Button)findViewById(R.id.tipsdetails_people);
         psd = (Button)findViewById(R.id.tipsdetails_password);
+        rate = (Button)findViewById(R.id.tipsdetails_rate);
         hotel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -32,6 +33,12 @@ public class tips_detailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(tips_detailsActivity.this,admin_password_Activity.class));
+            }
+        });
+        rate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(tips_detailsActivity.this,admin_rateActivity.class));
             }
         });
     }

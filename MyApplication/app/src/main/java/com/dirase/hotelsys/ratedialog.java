@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 
 import java.io.ByteArrayOutputStream;
@@ -32,8 +33,10 @@ public class ratedialog extends Dialog {
     private Context context;      // 上下文
     private int layoutResID;      // 布局文件id
     private ImageButton rate1,rate2,rate3,rate4,rate5;
+    private EditText infotext;
     String id = "";
     String hotel = "";
+    String info = "";
 
     public ratedialog(Context context,String i,String h) {
         super(context, R.style.dialog_custom); //dialog的样式
@@ -50,6 +53,7 @@ public class ratedialog extends Dialog {
         rate3 = (ImageButton)findViewById(R.id.rate3);
         rate4 = (ImageButton)findViewById(R.id.rate4);
         rate5 = (ImageButton)findViewById(R.id.rate5);
+        infotext = (EditText)findViewById(R.id.rate_edit);
         Window window = getWindow();
         assert window != null;
         window.setGravity(Gravity.CENTER); // 此处可以设置dialog显示的位置为居中
@@ -65,7 +69,7 @@ public class ratedialog extends Dialog {
                     @Override
                     public void run() {
                         try {
-                            readParse(firurl+"rate/"+id+"-1-"+hotel);
+                            readParse(firurl+"rate/"+id+"-1-"+hotel+"-"+infotext.getText().toString());
                             dismiss();
 
                         } catch (Exception e) {
@@ -86,7 +90,7 @@ public class ratedialog extends Dialog {
                     @Override
                     public void run() {
                         try {
-                            readParse(firurl+"rate/"+id+"-2-"+hotel);
+                            readParse(firurl+"rate/"+id+"-2-"+hotel+"-"+infotext.getText().toString());
                             dismiss();
                         } catch (Exception e) {
                             dismiss();
@@ -105,7 +109,7 @@ public class ratedialog extends Dialog {
                     @Override
                     public void run() {
                         try {
-                            readParse(firurl+"rate/"+id+"-3-"+hotel);
+                            readParse(firurl+"rate/"+id+"-3-"+hotel+"-"+infotext.getText().toString());
                             dismiss();
                         } catch (Exception e) {
                             dismiss();
@@ -124,7 +128,7 @@ public class ratedialog extends Dialog {
                     @Override
                     public void run() {
                         try {
-                            readParse(firurl+"rate/"+id+"-4-"+hotel);
+                            readParse(firurl+"rate/"+id+"-4-"+hotel+"-"+infotext.getText().toString());
                             dismiss();
                         } catch (Exception e) {
                             dismiss();
@@ -143,7 +147,7 @@ public class ratedialog extends Dialog {
                     @Override
                     public void run() {
                         try {
-                            readParse(firurl+"rate/"+id+"-5-"+hotel);
+                            readParse(firurl+"rate/"+id+"-5-"+hotel+"-"+infotext.getText().toString());
                             dismiss();
                         } catch (Exception e) {
                             dismiss();

@@ -27,6 +27,7 @@ import static com.dirase.hotelsys.first.firurl;
 public class hotel_Activity extends AppCompatActivity {
     private TextView hotel_hotel_name,hotel_address,hotel_info;
     private Button hotel_details;
+    String name ="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +51,7 @@ public class hotel_Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent1 = new Intent(hotel_Activity.this,hotel_detailActivity.class);
-                intent1.putExtra("index",""+i);
+                intent1.putExtra("index",""+name);
                 startActivity(intent1);
             }
         });
@@ -65,6 +66,7 @@ public class hotel_Activity extends AppCompatActivity {
                 hotel_hotel_name.setText((String)ma.get("name"));
                 hotel_address.setText((String)ma.get("hotel_adress"));
                 hotel_info.setText((String)ma.get("hotel_information"));
+                name = (String)ma.get("name");
                 Looper.loop();
             }
         } catch (JSONException e) {

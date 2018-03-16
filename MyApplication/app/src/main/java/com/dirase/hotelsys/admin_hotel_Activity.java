@@ -1,5 +1,6 @@
 package com.dirase.hotelsys;
 
+import android.content.Intent;
 import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -27,7 +28,6 @@ public class admin_hotel_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_admin_hotel_);
         name=(EditText)findViewById(R.id.admin_hotel_name);
         info=(EditText)findViewById(R.id.admin_hotel_info);
-        room_num=(EditText)findViewById(R.id.admin_hotel_room_num);
         address=(EditText)findViewById(R.id.admin_hotel_address);
         phone=(EditText)findViewById(R.id.admin_hotel_phone);
         add=(Button)findViewById(R.id.admin_hotel_add);
@@ -39,8 +39,10 @@ public class admin_hotel_Activity extends AppCompatActivity {
                     @Override
                     public void run() {
                         try {
-                            if("OK".equals(readParse(firurl+"addhotel/"+name.getText().toString()+"-"+info.getText().toString()+"-"+room_num.getText().toString()+"-"+address.getText().toString()+"-"+phone.getText().toString()))){
-
+                            if("OK".equals(readParse(firurl+"addhotel/"+name.getText().toString()+"-"+info.getText().toString()+"-"+address.getText().toString()+"-"+phone.getText().toString()))){
+                                Intent intent1 = new Intent(admin_hotel_Activity.this,admin_add_room_Activity.class);
+                                intent1.putExtra("index",name.getText().toString());
+                                startActivity(intent1);
                             }
                             else {
                                 Looper.prepare();
