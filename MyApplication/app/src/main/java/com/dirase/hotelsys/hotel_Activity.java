@@ -6,9 +6,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -19,6 +22,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
 
@@ -27,8 +31,11 @@ import static com.dirase.hotelsys.first.firurl;
 public class hotel_Activity extends AppCompatActivity {
     private TextView hotel_hotel_name,hotel_address,hotel_info;
     private Button hotel_details;
+    private ListView hotel_rate_list;
+    private List<String> mList1 = new ArrayList<>();
+    private List<String> mList2 = new ArrayList<>();
     String name ="";
-
+    final hotel_rate_adapter adapter = new hotel_rate_adapter(hotel_Activity.this, mList1,mList2);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +47,8 @@ public class hotel_Activity extends AppCompatActivity {
         hotel_address = (TextView)findViewById(R.id.hotel_hotel_address);
         hotel_info = (TextView)findViewById(R.id.hotel_hotel_info);
         hotel_details = (Button)findViewById(R.id.hotel_hotel_detail);
+        hotel_rate_list = (ListView)findViewById(R.id.hotel_rate_list);
+        hotel_rate_list.setAdapter(adapter);
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -47,6 +56,17 @@ public class hotel_Activity extends AppCompatActivity {
             }
         });
         thread.start();
+        Thread thread1 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Analysis(readParse(firurl+"findtipsbyhotel/"+i));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        thread1.start();
         hotel_details.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -110,5 +130,30 @@ public class hotel_Activity extends AppCompatActivity {
         inStream.close();
         Log.e("json","readParse"+new String(outStream.toByteArray()));
         return new String(outStream.toByteArray());//通过out.Stream.toByteArray获取到写的数据
+    }
+
+    private ArrayList<HashMap<String, Object>> Analysis(String jsonStr)
+            throws JSONException {
+        ArrayList<HashMap<String, Object>> list = new ArrayList<HashMap<String, Object>>();
+        JSONArray jsonArray = new JSONArray(jsonStr);
+        for (int i = 0; i < jsonArray.length(); i++) {
+            JSONObject jsonObject = jsonArray.getJSONObject(i);
+            HashMap<String, Object> map = new HashMap<String, Object>();
+            map.put("tips_star", jsonObject.getString("tips_star"));
+            map.put("tips_text", jsonObject.getString("tips_text"));
+            mList1.add(jsonObject.getString("tips_star"));
+            mList2.add(jsonObject.getString("tips_text"));
+                adapter.notifyDataSetChanged();
+            list.add(map);
+        }
+        JSONObject jsonObject1 = new JSONObject(jsonStr);
+        HashMap<String, Object> map = new HashMap<String, Object>();
+        map.put("tips_star", jsonObject1.getString("tips_star"));
+        map.put("tips_text", jsonObject1.getString("tips_text"));
+        mList1.add(jsonObject1.getString("tips_star"));
+        mList2.add(jsonObject1.getString("tips_text"));
+            adapter.notifyDataSetChanged();
+        list.add(map);
+        return list;
     }
 }
