@@ -10,10 +10,11 @@
         android:layout_height="wrap_content">
 
         <EditText
+            android:id="@+id/first_edittext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/first_edittext"
-            android:layout_weight="1"/>
+            android:layout_weight="1" />
+
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -21,6 +22,37 @@
             android:layout_weight="3"
             android:text="search"/>
 
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/first_tag"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="bottom">
+
+        <TextView
+            android:text="hotel adress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            />
+
+        <TextView
+            android:text="hotel name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            />
+
+        <TextView
+            android:text="hotel phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            />
     </LinearLayout>
 
     <ListView

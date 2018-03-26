@@ -91,9 +91,9 @@ public class hotel_detailActivity extends AppCompatActivity {
             mList2.add(jsonObject.getString("hotel_level"));
             mList3.add(jsonObject.getString("room_used"));
             mList4.add(jsonObject.getString("room_num"));
-            adapter.notifyDataSetChanged();
             list.add(map);
         }
+        adapter.notifyDataSetChanged();
         return list;
     }
 

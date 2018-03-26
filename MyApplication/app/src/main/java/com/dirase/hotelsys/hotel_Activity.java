@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -34,6 +35,7 @@ public class hotel_Activity extends AppCompatActivity {
     private ListView hotel_rate_list;
     private List<String> mList1 = new ArrayList<>();
     private List<String> mList2 = new ArrayList<>();
+    private ImageView star;
     String name ="";
     final hotel_rate_adapter adapter = new hotel_rate_adapter(hotel_Activity.this, mList1,mList2);
     @Override
@@ -48,6 +50,7 @@ public class hotel_Activity extends AppCompatActivity {
         hotel_info = (TextView)findViewById(R.id.hotel_hotel_info);
         hotel_details = (Button)findViewById(R.id.hotel_hotel_detail);
         hotel_rate_list = (ListView)findViewById(R.id.hotel_rate_list);
+        star = (ImageView)findViewById(R.id.hotel_hotel_star);
         hotel_rate_list.setAdapter(adapter);
         Thread thread = new Thread(new Runnable() {
             @Override
@@ -87,6 +90,14 @@ public class hotel_Activity extends AppCompatActivity {
                 hotel_address.setText((String)ma.get("hotel_adress"));
                 hotel_info.setText((String)ma.get("hotel_information"));
                 name = (String)ma.get("name");
+                float star_num = ((int)ma.get("hotel_star_1")+2*(int)ma.get("hotel_star_2")+3*(int)ma.get("hotel_star_3")+4*(int)ma.get("hotel_star_4")+5*(int)ma.get("hotel_star_5"))/((int)ma.get("hotel_star_1")+(int)ma.get("hotel_star_2")+(int)ma.get("hotel_star_3")+(int)ma.get("hotel_star_4")+(int)ma.get("hotel_star_5"));
+                if(star_num<2){
+                    star.setBackgroundResource(R.drawable.one);
+                }
+                else if(star_num<3)star.setBackgroundResource(R.drawable.two);
+                else if(star_num<4)star.setBackgroundResource(R.drawable.three);
+                else if(star_num<5)star.setBackgroundResource(R.drawable.four);
+                else star.setBackgroundResource(R.drawable.five);
                 Looper.loop();
             }
         } catch (JSONException e) {
@@ -106,11 +117,11 @@ public class hotel_Activity extends AppCompatActivity {
         map.put("name", jsonObject.getString("name"));
         map.put("hotel_information", jsonObject.getString("hotel_information"));
         map.put("hotel_adress", jsonObject.getString("hotel_adress"));
-        map.put("hotel_star_1", jsonObject.getString("hotel_star_1"));
-        map.put("hotel_star_2", jsonObject.getString("hotel_star_2"));
-        map.put("hotel_star_3", jsonObject.getString("hotel_star_3"));
-        map.put("hotel_star_4", jsonObject.getString("hotel_star_4"));
-        map.put("hotel_star_5", jsonObject.getString("hotel_star_5"));
+        map.put("hotel_star_1", jsonObject.getInt("hotel_star_1"));
+        map.put("hotel_star_2", jsonObject.getInt("hotel_star_2"));
+        map.put("hotel_star_3", jsonObject.getInt("hotel_star_3"));
+        map.put("hotel_star_4", jsonObject.getInt("hotel_star_4"));
+        map.put("hotel_star_5", jsonObject.getInt("hotel_star_5"));
         map.put("hotel_phone", jsonObject.getString("hotel_phone"));
         list.add(map);
         return list;
