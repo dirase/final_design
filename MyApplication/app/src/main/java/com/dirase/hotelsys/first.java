@@ -89,9 +89,6 @@ public class first extends AppCompatActivity {
             @Override
             public void onDeleteClick(int i) {
                 startActivity(new Intent(first.this,hotel_Activity.class));
-//                mList1.remove(i);
-//                mList2.remove(i);
-//                mList3.remove(i);
                 adapter.notifyDataSetChanged();
             }
         });
@@ -226,6 +223,7 @@ public class first extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
             Log.e("json","error2");
+            resultJson(url);
         }
         Log.e("json","hotel_room_num result:"+string);
         return string;
@@ -246,6 +244,7 @@ public class first extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
             Log.e("json","error2");
+            resultJson2(url);
         }
         Log.e("json","num result:"+string);
         return string;
@@ -266,55 +265,10 @@ public class first extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
             Log.e("json","error2");
+            resultJson1(url);
         }
         Log.e("json","result:"+string);
         return string;
     }
 
-//    private void product_data(){
-//        List<HashMap<String, Object>> lists = null;
-//        try {
-//            lists = Analysis(readParse(url));//解析出json数据
-//        } catch (Exception e) {
-//            // TODO Auto-generated catch block
-//            e.printStackTrace();
-//        }
-//        List<HashMap<String, Object>> data = new ArrayList<HashMap<String,Object>>();
-//        for(HashMap<String, Object> news : lists){
-//            HashMap<String, Object> item = new HashMap<String, Object>();
-//            item.put("hotel_adress", news.get("hotel_adress"));
-//            item.put("name", news.get("name"));
-//            item.put("hotel_phone", news.get("hotel_phone"));
-//            //item.put("xianJia", news.get("xianJia"));
-//            //item.put("id", news.get("id"));
-//
-////            try {
-////                bitmap = ImageService.getImage(news.get("logo").toString());//图片从服务器上获取
-////            } catch (Exception e) {
-////                // TODO Auto-generated catch block
-////                e.printStackTrace();
-////            }
-////            if(bitmap==null){
-////                Log.i("bitmap", ""+bitmap);
-////                Toast.makeText(TravelLine.this, "图片加载错误", Toast.LENGTH_SHORT)
-////                        .show();                                         // 显示图片编号
-////            }
-////            item.put("logo",bitmap);
-//            data.add(item);
-//        }
-//        MySimpleAdapter1 listItemAdapter = new MySimpleAdapter1(first.this,data,R.layout.first_listview_item,
-//                // 动态数组与ImageItem对应的子项
-//                new String[] { "hotel_adress", "name",
-//                        "hotel_phone"},
-//                // ImageItem的XML文件里面的一个ImageView,两个TextView ID
-//                new int[] { R.id.item_btn1, R.id.item_btn2,
-//                        R.id.item_btn3});
-//        listView.setAdapter(listItemAdapter);
-//        //添加点击
-//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
-//                                    long arg3) {
-//            }
-//        });
-//    }
 }

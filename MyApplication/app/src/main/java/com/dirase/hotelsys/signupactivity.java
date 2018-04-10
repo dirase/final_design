@@ -59,11 +59,8 @@ public class signupactivity extends AppCompatActivity {
                             stringBuilder.append(signup_phone.getText().toString());
                             try {
                                 if("OK".equals(readParse(stringBuilder.toString()))){
-                                    //Looper.prepare();
-                                    //Toast.makeText(signupactivity.this,"success",Toast.LENGTH_SHORT).show();
                                     startActivity(new Intent(signupactivity.this,first.class));
                                     finish();
-                                    //Looper.loop();
                                 }
                             } catch (Exception e) {
                                 Looper.prepare();
@@ -76,9 +73,14 @@ public class signupactivity extends AppCompatActivity {
                     thread.start();
                 }
                 else {
-                    Log.e("error","mimacuowu");
                     Toast.makeText(signupactivity.this,"please confirm password",Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+        signup_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
             }
         });
     }

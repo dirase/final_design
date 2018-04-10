@@ -77,8 +77,8 @@ public class MainActivity extends AppCompatActivity {
         sign_up.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               // startActivity(new Intent(MainActivity.this,testActivity.class));
-                finish();
+                startActivity(new Intent(MainActivity.this,newfirstActivity.class));
+               // finish();
             }
         });
     }
@@ -100,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
             Log.e("json","error2");
+            resultJson1(url);
             return "0";
         }
         Log.e("json","result:"+string);

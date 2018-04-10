@@ -1,3 +1,29 @@
 <resources>
     <string name="app_name">hotelsys</string>
+    <string-array name="spingarr">
+        <item>1星</item>
+        <item>2星</item>
+        <item>3星</item>
+        <item>4星</item>
+        <item>5星</item>
+        <item>其他</item>
+    </string-array>
+
+    <string-array name="spingjiagemin">
+        <item>200以下</item>
+        <item>200</item>
+        <item>300</item>
+        <item>400</item>
+        <item>500</item>
+        <item>1000</item>
+    </string-array>
+
+    <string-array name="spingjiagemax">
+        <item>200</item>
+        <item>300</item>
+        <item>400</item>
+        <item>500</item>
+        <item>1000</item>
+        <item>1000以上</item>
+    </string-array>
 </resources>

@@ -81,11 +81,11 @@ public class history_details_Activity extends AppCompatActivity {
             while (it.hasNext()) {
                 Map<String, Object> ma = it.next();
                 Looper.prepare();
-                start_time.setText( (String)ma.get("tips_time_start"));
-                end_time.setText( (String)ma.get("tips_time_stop"));
-                tips_num.setText( (String)ma.get("tips_num"));
-                tips_room.setText( (String)ma.get("tips_room"));
-                tips_hotel.setText( (String)ma.get("tips_hotel"));
+                start_time.setText( "tips_time_start "+(String)ma.get("tips_time_start"));
+                end_time.setText( "tips_time_stop "+(String)ma.get("tips_time_stop"));
+                tips_num.setText( "tips_num "+(String)ma.get("tips_num"));
+                tips_room.setText( "tips_room "+(String)ma.get("tips_room"));
+                tips_hotel.setText( "tips_hotel "+(String)ma.get("tips_hotel"));
                 room_num = (String)ma.get("tips_room");
                 hotel_num = (String)ma.get("tips_hotel");
                 Looper.loop();
@@ -97,6 +97,7 @@ public class history_details_Activity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
             Log.e("json","error2");
+            resultJson1(url);
             return "0";
         }
         Log.e("json","result:"+string);

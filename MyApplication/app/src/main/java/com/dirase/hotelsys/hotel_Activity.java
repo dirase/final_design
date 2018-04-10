@@ -86,9 +86,9 @@ public class hotel_Activity extends AppCompatActivity {
             while (it.hasNext()) {
                 Map<String, Object> ma = it.next();
                 Looper.prepare();
-                hotel_hotel_name.setText((String)ma.get("name"));
-                hotel_address.setText((String)ma.get("hotel_adress"));
-                hotel_info.setText((String)ma.get("hotel_information"));
+                hotel_hotel_name.setText("hotel_name "+(String)ma.get("name"));
+                hotel_address.setText("hotel_adress "+(String)ma.get("hotel_adress"));
+                hotel_info.setText("hotel_information "+(String)ma.get("hotel_information"));
                 name = (String)ma.get("name");
                 float star_num = ((int)ma.get("hotel_star_1")+2*(int)ma.get("hotel_star_2")+3*(int)ma.get("hotel_star_3")+4*(int)ma.get("hotel_star_4")+5*(int)ma.get("hotel_star_5"))/((int)ma.get("hotel_star_1")+(int)ma.get("hotel_star_2")+(int)ma.get("hotel_star_3")+(int)ma.get("hotel_star_4")+(int)ma.get("hotel_star_5"));
                 if(star_num<2){
@@ -106,6 +106,7 @@ public class hotel_Activity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
             Log.e("json","error2");
+            resultJson1(url);
         }
     }
 

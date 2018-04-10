@@ -54,9 +54,9 @@ public class room_adapter extends BaseAdapter {
         } else {
             viewHolder = (ViewHolder) view.getTag();
         }
-        viewHolder.mButton1.setText(mList1.get(i));
-        viewHolder.mButton2.setText(mList2.get(i));
-        viewHolder.mButton3.setText(mList3.get(i));
+        viewHolder.mButton1.setText("room_name "+mList1.get(i));
+        viewHolder.mButton2.setText("level "+mList2.get(i));
+        viewHolder.mButton3.setText("room used? "+mList3.get(i));
         viewHolder.mButton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
