@@ -50,9 +50,14 @@ public class first extends AppCompatActivity {
     private Context context = first.this;
     private  List<String> mList2 = new ArrayList<>();
     private  List<String> mList3 = new ArrayList<>();
+    private  List<String> mList4 = new ArrayList<>();
+    private  List<String> mList5 = new ArrayList<>();
+    private  List<String> mList6 = new ArrayList<>();
+    private  List<String> mList7 = new ArrayList<>();
+    private String newurl ="";
     private int hotel_num,hotel_room_num;
     public String firtext;
-    final MyAdapter adapter = new MyAdapter(first.this, mList1,mList2,mList3);
+    final MyAdapter adapter = new MyAdapter(first.this, mList1,mList2,mList3,mList4,mList5,mList6,mList7);
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -61,16 +66,26 @@ public class first extends AppCompatActivity {
         first_button3 = (Button)findViewById(R.id.first_button3);
         first_search = (Button)findViewById(R.id.first_search);
         first_edittext = (EditText)findViewById(R.id.first_edittext);
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        newurl = bundle.getString("index");
+        Log.e("newurl",newurl);
         //initList();
-        final Thread thread = new Thread(new Runnable() {
+//        final Thread thread = new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                hotel_num = resultJson1(url1);
+//                for(int i = 0;i<hotel_num;i++){
+//                    StringBuilder stringBuilder = new StringBuilder(url);
+//                    stringBuilder.append(i);
+//                    hotel_room_num = resultJson(stringBuilder.toString());
+//                }
+//            }
+//        });
+        Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
-                hotel_num = resultJson1(url1);
-                for(int i = 0;i<hotel_num;i++){
-                    StringBuilder stringBuilder = new StringBuilder(url);
-                    stringBuilder.append(i);
-                    hotel_room_num = resultJson(stringBuilder.toString());
-                }
+                resultJson4(newurl);
             }
         });
         thread.start();
@@ -269,6 +284,47 @@ public class first extends AppCompatActivity {
         }
         Log.e("json","result:"+string);
         return string;
+    }
+
+    private void  resultJson4(String url) {
+        try {
+            Iterator<HashMap<String, Object>> it=Analysis4(readParse(url)).iterator();
+            while (it.hasNext()) {
+                Map<String, Object> ma = it.next();
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+            Log.e("json","error1");
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.e("json","error2");
+            resultJson1(url);
+        }
+    }
+
+    private  ArrayList<HashMap<String, Object>> Analysis4(String jsonStr)
+            throws JSONException {
+        ArrayList<HashMap<String, Object>> list = new ArrayList<HashMap<String, Object>>();
+        JSONArray jsonArray = new JSONArray(jsonStr);
+        for (int i = 0; i < jsonArray.length(); i++) {
+            JSONObject jsonObject = jsonArray.getJSONObject(i);
+            HashMap<String, Object> map = new HashMap<String, Object>();
+            map.put("hotel_adress", jsonObject.getString("hotel_adress"));
+            map.put("name", jsonObject.getString("name"));
+            map.put("hotel_phone", jsonObject.getString("hotel_phone"));
+            map.put("hotel_room_num", jsonObject.getInt("hotel_room_num"));
+            map.put("num", jsonObject.getInt("num"));
+            mList1.add(jsonObject.getString("hotel_adress"));
+            mList2.add(jsonObject.getString("name"));
+            mList3.add(jsonObject.getString("hotel_phone"));
+            mList4.add(jsonObject.getString("hotel_stars"));
+            mList5.add(jsonObject.getString("hotel_leixing"));
+            mList6.add(jsonObject.getString("hotel_feature"));
+            mList7.add(jsonObject.getString("num"));
+            list.add(map);
+        }
+        adapter.notifyDataSetChanged();
+        return list;
     }
 
 }

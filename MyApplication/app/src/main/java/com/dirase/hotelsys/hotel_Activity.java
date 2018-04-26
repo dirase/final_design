@@ -30,7 +30,7 @@ import java.util.StringTokenizer;
 import static com.dirase.hotelsys.first.firurl;
 
 public class hotel_Activity extends AppCompatActivity {
-    private TextView hotel_hotel_name,hotel_address,hotel_info;
+    private TextView hotel_hotel_name,hotel_address,hotel_info,hotel_hotel_stars,hotel_jiage;
     private Button hotel_details;
     private ListView hotel_rate_list;
     private List<String> mList1 = new ArrayList<>();
@@ -51,6 +51,8 @@ public class hotel_Activity extends AppCompatActivity {
         hotel_details = (Button)findViewById(R.id.hotel_hotel_detail);
         hotel_rate_list = (ListView)findViewById(R.id.hotel_rate_list);
         star = (ImageView)findViewById(R.id.hotel_hotel_star);
+        hotel_hotel_stars = (TextView)findViewById(R.id.hotel_hotel_stars);
+        hotel_jiage = (TextView)findViewById(R.id.hotel_jiage);
         hotel_rate_list.setAdapter(adapter);
         Thread thread = new Thread(new Runnable() {
             @Override
@@ -73,8 +75,13 @@ public class hotel_Activity extends AppCompatActivity {
         hotel_details.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent1 = new Intent(hotel_Activity.this,hotel_detailActivity.class);
-                intent1.putExtra("index",""+name);
+//                Intent intent1 = new Intent(hotel_Activity.this,hotel_detailActivity.class);
+//                intent1.putExtra("index",""+name);
+//                startActivity(intent1);
+
+                Intent intent1 = new Intent(hotel_Activity.this,testActivity.class);
+                intent1.putExtra("index",i);
+                intent1.putExtra("hotel",i);
                 startActivity(intent1);
             }
         });
@@ -90,6 +97,8 @@ public class hotel_Activity extends AppCompatActivity {
                 hotel_address.setText("hotel_adress "+(String)ma.get("hotel_adress"));
                 hotel_info.setText("hotel_information "+(String)ma.get("hotel_information"));
                 name = (String)ma.get("name");
+                hotel_hotel_stars.setText("星级："+(String)ma.get("hotel_stars")+"星级");
+                hotel_jiage.setText("价格："+(int)ma.get("hotel_min"+"~"+(int)ma.get("hotel_max")));
                 float star_num = ((int)ma.get("hotel_star_1")+2*(int)ma.get("hotel_star_2")+3*(int)ma.get("hotel_star_3")+4*(int)ma.get("hotel_star_4")+5*(int)ma.get("hotel_star_5"))/((int)ma.get("hotel_star_1")+(int)ma.get("hotel_star_2")+(int)ma.get("hotel_star_3")+(int)ma.get("hotel_star_4")+(int)ma.get("hotel_star_5"));
                 if(star_num<2){
                     star.setBackgroundResource(R.drawable.one);
@@ -106,7 +115,6 @@ public class hotel_Activity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
             Log.e("json","error2");
-            resultJson1(url);
         }
     }
 
@@ -124,6 +132,9 @@ public class hotel_Activity extends AppCompatActivity {
         map.put("hotel_star_4", jsonObject.getInt("hotel_star_4"));
         map.put("hotel_star_5", jsonObject.getInt("hotel_star_5"));
         map.put("hotel_phone", jsonObject.getString("hotel_phone"));
+        map.put("hotel_stars", jsonObject.getString("hotel_stars"));
+        map.put("hotel_min", jsonObject.getInt("hotel_min"));
+        map.put("hotel_max", jsonObject.getInt("hotel_max"));
         list.add(map);
         return list;
     }

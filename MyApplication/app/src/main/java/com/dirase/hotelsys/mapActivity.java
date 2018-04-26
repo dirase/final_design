@@ -60,7 +60,7 @@ public class mapActivity extends AppCompatActivity {
         LatLng cenpt = latLng;
         MapStatus mMapStatus = new MapStatus.Builder()
                 .target(cenpt)
-                .zoom(18)
+                .zoom(15)
                 .build();
         MapStatusUpdate mMapStatusUpdate = MapStatusUpdateFactory.newMapStatus(mMapStatus);
         //改变地图状态
@@ -84,7 +84,7 @@ public class mapActivity extends AppCompatActivity {
 
 
         //定义Maker坐标点
-        LatLng point = new LatLng(118.789485,32.02196);
+        LatLng point = new LatLng(32.02196,118.789485);
         //构建Marker图标
         BitmapDescriptor bitmap = BitmapDescriptorFactory
                 .fromResource(R.mipmap.ic_launcher_round);

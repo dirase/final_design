@@ -30,19 +30,28 @@
             />
 
         <TextView
-            android:text="tips room"
+            android:text="tips jiage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
             />
+
+        <TextView
+            android:text="phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            />
+
     </LinearLayout>
 
     <ListView
         android:id="@+id/history_listview"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="3"
+        android:layout_weight="4"
         />
     <LinearLayout
         android:id="@+id/top"

@@ -56,7 +56,8 @@
             android:value="YqI76PbUWTmp9ozxcOHpm9t7dROMyQAT" />
 
         <activity android:name=".mapActivity" />
-        <activity android:name=".newfirstActivity"></activity>
+        <activity android:name=".newfirstActivity" />
+        <activity android:name=".hoteladminActivity"></activity>
     </application>
 
 </manifest>

@@ -33,8 +33,9 @@ public class historyActivity extends AppCompatActivity {
     private  List<String> mList2 = new ArrayList<>();
     private  List<String> mList3 = new ArrayList<>();
     private  List<String> mList4 = new ArrayList<>();
+    private  List<String> mList5 = new ArrayList<>();
     private ListView listView;
-    final tips_adapter adapter = new tips_adapter(historyActivity.this, mList1,mList2,mList3,mList4);
+    final tips_adapter adapter = new tips_adapter(historyActivity.this, mList1,mList2,mList3,mList4,mList5);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,6 +97,7 @@ public class historyActivity extends AppCompatActivity {
             mList2.add(jsonObject.getString("tips_hotel"));
             mList3.add(jsonObject.getString("tips_room"));
             mList4.add(jsonObject.getString("tips_num"));
+            mList5.add(jsonObject.getString("tips_phone"));
             adapter.notifyDataSetChanged();
             list.add(map);
         }

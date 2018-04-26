@@ -1,5 +1,6 @@
 package com.dirase.hotelsys;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -17,8 +19,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
+import static com.dirase.hotelsys.R.id.btn;
+import static com.dirase.hotelsys.R.id.btn2;
 import static com.dirase.hotelsys.first.firurl;
 
 public class newfirstActivity extends AppCompatActivity {
@@ -29,8 +34,11 @@ public class newfirstActivity extends AppCompatActivity {
     private RadioButton BGroupID;
     private RadioButton RGroupID;
     private String url;
-    private Button confirm;
+    private Button confirm,btn1,btn2;
     private EditText sheng,city;
+    private int year, month,day;
+    private String date = "";
+    private String date1 = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,10 +54,15 @@ public class newfirstActivity extends AppCompatActivity {
         confirm = (Button)findViewById(R.id.newfirst_confirm);
         sheng = (EditText)findViewById(R.id.newfirst_sheng);
         city = (EditText)findViewById(R.id.newfirst_city);
+        btn1 = (Button)findViewById(R.id.newfirst_hotel_btn1);
+        btn2 = (Button)findViewById(R.id.newfirst_hotel_btn2);
         leixing = 3;
         min = 0;
         max = 999999;
         stars = 0;
+        year = 2000;
+        month = 1;
+        day = 1;
         //设置监听
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -155,12 +168,57 @@ public class newfirstActivity extends AppCompatActivity {
                     startActivity(mintent);
                 }
                 else {
-                    url = firurl+"gethotel2"+min+"-"+max+"-"+sheng.getText().toString()+"-"+city.getText().toString()+"-"+stars+"-"+leixing;
+                    url = firurl+"gethotel/"+min+"-"+max+"-"+sheng.getText().toString()+"-"+city.getText().toString()+"-"+stars+"-"+leixing;
                     Intent mintent=new Intent(newfirstActivity.this,first.class);
                     mintent.putExtra("index",url);
                     startActivity(mintent);
                 }
             }
         });
+
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                date();
+                datePickerDialog();
+            }
+        });
+
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                date();
+                datePickerDialog1();
+            }
+        });
+    }
+
+    private void datePickerDialog() {
+        new DatePickerDialog(newfirstActivity.this, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int monthOfYear, int dayOfMonth) {
+                date = String.format("%d年%d月%d日", year, monthOfYear, dayOfMonth);
+                btn1.setText(date);
+            }
+        }, year, month, day).show();
+    }
+
+    private void datePickerDialog1() {
+        new DatePickerDialog(newfirstActivity.this, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int monthOfYear, int dayOfMonth) {
+                date1 = String.format("%d年%d月%d日", year, monthOfYear, dayOfMonth);
+                btn2.setText(date1);
+            }
+        }, year, month, day).show();
+    }
+    private void date() {
+        Calendar c = Calendar.getInstance();
+        //年
+        year = c.get(Calendar.YEAR);
+        //月
+        month = c.get(Calendar.MONTH)+1;
+        //日
+        day = c.get(Calendar.DAY_OF_MONTH);
     }
 }

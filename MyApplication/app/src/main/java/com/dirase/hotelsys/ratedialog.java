@@ -19,6 +19,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Calendar;
 
 import static android.R.string.no;
 import static android.R.string.yes;
@@ -37,6 +38,7 @@ public class ratedialog extends Dialog {
     String id = "";
     String hotel = "";
     String info = "";
+    int year, month, day;
 
     public ratedialog(Context context,String i,String h) {
         super(context, R.style.dialog_custom); //dialog的样式
@@ -69,9 +71,11 @@ public class ratedialog extends Dialog {
                     @Override
                     public void run() {
                         try {
-                            readParse(firurl+"rate/"+id+"-1-"+hotel+"-"+infotext.getText().toString());
-                            dismiss();
-
+                            date();
+                            Log.e("shijian",firurl+"rate/"+id+"-1-"+hotel+"-"+infotext.getText().toString()+"-"+year+"-"+month+"-"+day);
+                            if ("OK".equals(readParse(firurl+"rate/"+id+"-1-"+hotel+"-"+infotext.getText().toString()+"-"+year+"-"+month+"-"+day))){
+                                dismiss();
+                            }
                         } catch (Exception e) {
                             dismiss();
                             e.printStackTrace();
@@ -90,8 +94,11 @@ public class ratedialog extends Dialog {
                     @Override
                     public void run() {
                         try {
-                            readParse(firurl+"rate/"+id+"-2-"+hotel+"-"+infotext.getText().toString());
-                            dismiss();
+                            date();
+                            Log.e("shijian",firurl+"rate/"+id+"-1-"+hotel+"-"+infotext.getText().toString()+"-"+year+"-"+month+"-"+day);
+                            if ("OK".equals(readParse(firurl+"rate/"+id+"-1-"+hotel+"-"+infotext.getText().toString()+"-"+year+"-"+month+"-"+day))){
+                                dismiss();
+                            }
                         } catch (Exception e) {
                             dismiss();
                             e.printStackTrace();
@@ -109,8 +116,11 @@ public class ratedialog extends Dialog {
                     @Override
                     public void run() {
                         try {
-                            readParse(firurl+"rate/"+id+"-3-"+hotel+"-"+infotext.getText().toString());
-                            dismiss();
+                            date();
+                            Log.e("shijian",firurl+"rate/"+id+"-1-"+hotel+"-"+infotext.getText().toString()+"-"+year+"-"+month+"-"+day);
+                            if ("OK".equals(readParse(firurl+"rate/"+id+"-1-"+hotel+"-"+infotext.getText().toString()+"-"+year+"-"+month+"-"+day))){
+                                dismiss();
+                            }
                         } catch (Exception e) {
                             dismiss();
                             e.printStackTrace();
@@ -128,8 +138,11 @@ public class ratedialog extends Dialog {
                     @Override
                     public void run() {
                         try {
-                            readParse(firurl+"rate/"+id+"-4-"+hotel+"-"+infotext.getText().toString());
-                            dismiss();
+                            date();
+                            Log.e("shijian",firurl+"rate/"+id+"-1-"+hotel+"-"+infotext.getText().toString()+"-"+year+"-"+month+"-"+day);
+                            if ("OK".equals(readParse(firurl+"rate/"+id+"-1-"+hotel+"-"+infotext.getText().toString()+"-"+year+"-"+month+"-"+day))){
+                                dismiss();
+                            }
                         } catch (Exception e) {
                             dismiss();
                             e.printStackTrace();
@@ -147,8 +160,11 @@ public class ratedialog extends Dialog {
                     @Override
                     public void run() {
                         try {
-                            readParse(firurl+"rate/"+id+"-5-"+hotel+"-"+infotext.getText().toString());
-                            dismiss();
+                            date();
+                            Log.e("shijian",firurl+"rate/"+id+"-1-"+hotel+"-"+infotext.getText().toString()+"-"+year+"-"+month+"-"+day);
+                            if ("OK".equals(readParse(firurl+"rate/"+id+"-1-"+hotel+"-"+infotext.getText().toString()+"-"+year+"-"+month+"-"+day))){
+                                dismiss();
+                            }
                         } catch (Exception e) {
                             dismiss();
                             e.printStackTrace();
@@ -158,6 +174,16 @@ public class ratedialog extends Dialog {
                 thread.start();
             }
         });
+    }
+
+    private void date() {
+        Calendar c = Calendar.getInstance();
+        //年
+        year = c.get(Calendar.YEAR);
+        //月
+        month = c.get(Calendar.MONTH)+1;
+        //日
+        day = c.get(Calendar.DAY_OF_MONTH);
     }
 
     public static String readParse(String urlPath) throws Exception {

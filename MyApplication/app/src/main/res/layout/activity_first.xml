@@ -23,6 +23,9 @@
             android:text="search"/>
 
     </LinearLayout>
+
+
+
     <LinearLayout
         android:id="@+id/first_tag"
         android:layout_width="fill_parent"
@@ -53,14 +56,22 @@
             android:layout_weight="1"
             android:gravity="center"
             />
+        <TextView
+            android:text="hotel stars"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            />
+
     </LinearLayout>
 
     <ListView
         android:id="@+id/first_listview"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="3"
-        />
+        android:layout_weight="3" />
+
     <LinearLayout
         android:id="@+id/top"
         android:layout_width="fill_parent"
