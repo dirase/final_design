@@ -103,7 +103,6 @@
         android:layout_height="wrap_content"
         android:text="rate"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:background="#00000000"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp"
         app:layout_constraintRight_toRightOf="parent"
@@ -127,7 +126,7 @@
         android:id="@+id/history_details_room"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="phone"
+        android:text="电话"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -137,14 +136,14 @@
         android:layout_marginRight="8dp"
         android:textSize="28dp"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintVertical_bias="0.257" />
+        app:layout_constraintHorizontal_bias="0.162"
+        app:layout_constraintVertical_bias="0.253" />
 
     <TextView
         android:id="@+id/history_details_jiage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="金额"
+        android:text="房型"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -154,8 +153,41 @@
         android:layout_marginRight="8dp"
         android:textSize="28dp"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintVertical_bias="0.37" />
+        app:layout_constraintHorizontal_bias="0.817"
+        app:layout_constraintVertical_bias="0.253" />
+
+    <TextView
+        android:id="@+id/history_details_personname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:text="姓名"
+        android:textSize="28dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.817"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.361" />
+
+    <TextView
+        android:id="@+id/history_details_settime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="创建时间"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="8dp"
+        android:textSize="28dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintVertical_bias="0.474" />
 
     <Button
         android:id="@+id/history_details_hotel"
@@ -170,6 +202,8 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.498" />
+        app:layout_constraintVertical_bias="0.355"
+        android:background="#00000000"
+        app:layout_constraintHorizontal_bias="0.135" />
 
 </android.support.constraint.ConstraintLayout>

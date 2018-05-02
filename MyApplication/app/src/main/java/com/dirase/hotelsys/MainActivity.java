@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         sign_up = (Button)findViewById(R.id.first_signup);
         first_password_edittext = (EditText)findViewById(R.id.first_password_edittext);
         first_username_edittext = (EditText)findViewById(R.id.first_username_edittext);
+        //Log.e("image","1:"+R.drawable.hotel1);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

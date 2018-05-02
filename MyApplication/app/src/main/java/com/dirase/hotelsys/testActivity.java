@@ -29,6 +29,7 @@ public class testActivity extends AppCompatActivity {
     private String date2,date1,hotel;
     private EditText phone,personname,info;
     private String ratetime = "";
+    private String hotel_num ="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +45,7 @@ public class testActivity extends AppCompatActivity {
         Bundle bundle = intent.getExtras();
         final String i = bundle.getString("index");
         hotel = bundle.getString("hotel");
+        hotel_num = bundle.getString("num");
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -67,8 +69,7 @@ public class testActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         try {
-                            Log.e("shijian",firurl+"addtips/"+date1+"-"+date2+"-"+hotel+"-"+people_num+"-"+phone.getText().toString()+"-"+year+"-"+month+"-"+day+"-"+hour+"-"+minute+"-"+personname.getText().toString()+"-"+info.getText().toString());
-                            if("OK".equals(readParse(firurl+"addtips/"+date1+"-"+date2+"-"+hotel+"-"+people_num+"-"+phone.getText().toString()+"-"+year+"-"+month+"-"+day+"-"+hour+"-"+minute+"-"+personname.getText().toString()+"-"+info.getText().toString()))){
+                            if("OK".equals(readParse(firurl+"addtips/"+date1+"-"+date2+"-"+hotel_num+"-"+people_num+"-"+phone.getText().toString()+"-"+year+"-"+month+"-"+day+"-"+hour+"-"+minute+"-"+personname.getText().toString()+"-"+info.getText().toString()+"-"+i))){
                                 finish();
                             }
                             else {
@@ -90,8 +91,14 @@ public class testActivity extends AppCompatActivity {
         new DatePickerDialog(testActivity.this, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int monthOfYear, int dayOfMonth) {
-                 date2 = String.format("%d年%d月%d日", year, monthOfYear, dayOfMonth);
-                btn.setText(date2);
+//                 date2 = String.format("%d%d%d", year, monthOfYear, dayOfMonth);
+//                btn.setText(date2);
+                String y = String.format("%d",year);
+                String  m = String.format("%d",monthOfYear);
+                String d = String.format("%d",dayOfMonth);
+                int f = Integer.parseInt(m)+1;
+                date2 = y+f+d;
+                btn.setText(y+"年"+f+"月"+d+"日");
             }
         }, year, month, day).show();
     }
@@ -100,8 +107,13 @@ public class testActivity extends AppCompatActivity {
         new DatePickerDialog(testActivity.this, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int monthOfYear, int dayOfMonth) {
-                date1 = String.format("%d年%d月%d日", year, monthOfYear, dayOfMonth);
-                btn2.setText(date1);
+                String y = String.format("%d",year);
+                String  m = String.format("%d",monthOfYear);
+                String d = String.format("%d",dayOfMonth);
+                int f = Integer.parseInt(m)+1;
+                //date1 = String.format("%d%d%d", year, monthOfYear, dayOfMonth);
+                date1 = y+f+d;
+                btn2.setText(y+"年"+f+"月"+d+"日");
             }
         }, year, month, day).show();
     }
@@ -112,7 +124,7 @@ public class testActivity extends AppCompatActivity {
         //年
         year = c.get(Calendar.YEAR);
         //月
-        month = c.get(Calendar.MONTH)+1;
+        month = c.get(Calendar.MONTH);
         //日
         day = c.get(Calendar.DAY_OF_MONTH);
         //小时

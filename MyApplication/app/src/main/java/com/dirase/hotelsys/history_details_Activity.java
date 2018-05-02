@@ -28,7 +28,7 @@ import static com.dirase.hotelsys.first.firurl;
 
 public class history_details_Activity extends AppCompatActivity {
     private String i,room_num,hotel_num;
-    private TextView start_time,end_time,tips_num,tips_room,jiage;
+    private TextView start_time,end_time,tips_num,tips_room,jiage,settime,personname;
     private Button tips_hotel,tips_rate,tips_cancel;
     private AlertDialog alert = null;
     private AlertDialog.Builder builder = null;
@@ -51,7 +51,9 @@ public class history_details_Activity extends AppCompatActivity {
         tips_hotel=(Button)findViewById(R.id.history_details_hotel);
         tips_rate = (Button)findViewById(R.id.history_details_rate);
         jiage = (TextView)findViewById(R.id.history_details_jiage);
+        settime = (TextView)findViewById(R.id.history_details_settime);
         tips_cancel = (Button)findViewById(R.id.history_details_cancel);
+        personname = (TextView)findViewById(R.id.history_details_personname);
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -122,12 +124,14 @@ public class history_details_Activity extends AppCompatActivity {
                 Looper.prepare();
                 start_time.setText( (String)ma.get("tips_time_start"));
                 end_time.setText( (String)ma.get("tips_time_stop"));
-                tips_num.setText( "tips_num "+(String)ma.get("tips_num"));
-                tips_room.setText( "phone: "+(String)ma.get("tips_phone"));
-                tips_hotel.setText( "tips_hotel "+(String)ma.get("tips_hotel"));
+                tips_num.setText( "订单号 "+(String)ma.get("tips_num"));
+                tips_room.setText( "电话: "+(String)ma.get("tips_phone"));
+                tips_hotel.setText( "酒店： "+(String)ma.get("tips_hotel"));
                 //room_num = (String)ma.get("tips_room");
                 hotel_num = (String)ma.get("tips_hotel");
-                jiage.setText("金额："+(String)ma.get("tips_room"));
+                jiage.setText("房型："+(String)ma.get("tips_room"));
+                personname.setText("姓名："+(String)ma.get("tips_personname"));
+                settime.setText("创建时间："+(String)ma.get("tips_rateyear")+"年"+(String)ma.get("tips_ratemonth")+"月"+(String)ma.get("tips_rateday")+"日");
                 Looper.loop();
 
             }
@@ -156,6 +160,10 @@ public class history_details_Activity extends AppCompatActivity {
         map.put("tips_hotel", jsonObject.getString("tips_hotel"));
         map.put("tips_star", jsonObject.getString("tips_star"));
         map.put("tips_room", jsonObject.getString("tips_room"));
+        map.put("tips_rateyear", jsonObject.getString("tips_rateyear"));
+        map.put("tips_ratemonth", jsonObject.getString("tips_ratemonth"));
+        map.put("tips_rateday", jsonObject.getString("tips_rateday"));
+        map.put("tips_personname", jsonObject.getString("tips_personname"));
         list.add(map);
         return list;
     }

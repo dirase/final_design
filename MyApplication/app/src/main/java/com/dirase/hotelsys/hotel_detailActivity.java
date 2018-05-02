@@ -34,8 +34,10 @@ public class hotel_detailActivity extends AppCompatActivity {
     private  List<String> mList2 = new ArrayList<>();
     private  List<String> mList3 = new ArrayList<>();
     private  List<String> mList4 = new ArrayList<>();
+    private  List<String> mList5 = new ArrayList<>();
     private ListView listView;
-    final room_adapter adapter = new room_adapter(hotel_detailActivity.this, mList1,mList2,mList3,mList4);
+    final room_adapter adapter = new room_adapter(hotel_detailActivity.this, mList1,mList2,mList3,mList4,mList5);
+    private String hotel_num ="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +48,7 @@ public class hotel_detailActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         final String i = bundle.getString("index");
+        hotel_num = bundle.getString("num");
         /*listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -92,6 +95,7 @@ public class hotel_detailActivity extends AppCompatActivity {
             mList2.add(jsonObject.getString("hotel_level"));
             mList3.add(jsonObject.getString("room_used"));
             mList4.add(jsonObject.getString("room_num"));
+            mList5.add(hotel_num);
             list.add(map);
         }
         adapter.notifyDataSetChanged();

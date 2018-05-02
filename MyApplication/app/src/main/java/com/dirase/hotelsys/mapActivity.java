@@ -2,6 +2,7 @@ package com.dirase.hotelsys;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
@@ -41,10 +42,9 @@ public class mapActivity extends AppCompatActivity {
     private BaiduMap mBaiduMap;
     public LocationClient mLocationClient;
     public BDLocationListener myListener = new MyLocationListener();
-    private Button bt;
-    private Button button;
-    private Button buttons;
     private LatLng latLng;
+    double jing, wei;
+    private Button back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,18 +53,32 @@ public class mapActivity extends AppCompatActivity {
         //注意该方法要再setContentView方法之前实现
         SDKInitializer.initialize(getApplicationContext());
         setContentView(R.layout.activity_map);
+        back = (Button)findViewById(R.id.map_back);
+        jing = 118.789485;
+        wei = 32.02196;
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        jing = bundle.getDouble("jing");
+        wei = bundle.getDouble("wei");
+        Log.e("jingwei",""+jing+wei);
         initView();
         initMap();
         MapStatusUpdate mapStatusUpdate = MapStatusUpdateFactory.newLatLng(latLng);
         mBaiduMap.animateMapStatus(mapStatusUpdate);
-        LatLng cenpt = latLng;
+        LatLng cenpt = new LatLng(wei,jing);
         MapStatus mMapStatus = new MapStatus.Builder()
                 .target(cenpt)
-                .zoom(15)
+                .zoom(18)
                 .build();
         MapStatusUpdate mMapStatusUpdate = MapStatusUpdateFactory.newMapStatus(mMapStatus);
         //改变地图状态
         mBaiduMap.setMapStatus(mMapStatusUpdate);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 
 
@@ -84,7 +98,7 @@ public class mapActivity extends AppCompatActivity {
 
 
         //定义Maker坐标点
-        LatLng point = new LatLng(32.02196,118.789485);
+        LatLng point = new LatLng(wei,jing);
         //构建Marker图标
         BitmapDescriptor bitmap = BitmapDescriptorFactory
                 .fromResource(R.mipmap.ic_launcher_round);
@@ -214,14 +228,14 @@ public class mapActivity extends AppCompatActivity {
 
     private void initView() {
         mMapView = (MapView) findViewById(R.id.bmapView);
-        bt = (Button) findViewById(R.id.bt);
-        bt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                MapStatusUpdate mapStatusUpdate = MapStatusUpdateFactory.newLatLng(latLng);
-                mBaiduMap.animateMapStatus(mapStatusUpdate);
-            }
-        });
+//        bt = (Button) findViewById(R.id.bt);
+//        bt.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                MapStatusUpdate mapStatusUpdate = MapStatusUpdateFactory.newLatLng(latLng);
+//                mBaiduMap.animateMapStatus(mapStatusUpdate);
+//            }
+//        });
     }
 
     @Override
@@ -245,22 +259,35 @@ public class mapActivity extends AppCompatActivity {
         mMapView.onPause();
     }
 
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.bt:
-                //把定位点再次显现出来
-                MapStatusUpdate mapStatusUpdate = MapStatusUpdateFactory.newLatLng(latLng);
-                mBaiduMap.animateMapStatus(mapStatusUpdate);
-                break;
-            case R.id.button:
-                //卫星地图
-                mBaiduMap.setMapType(BaiduMap.MAP_TYPE_SATELLITE);
-                break;
-            case R.id.buttons:
-                //普通地图
-                mBaiduMap.setMapType(BaiduMap.MAP_TYPE_NORMAL);
-                break;
-        }
+//    public void onClick(View v) {
+//        switch (v.getId()) {
+//            case R.id.bt:
+//                //把定位点再次显现出来
+//                MapStatusUpdate mapStatusUpdate = MapStatusUpdateFactory.newLatLng(latLng);
+//                mBaiduMap.animateMapStatus(mapStatusUpdate);
+//                break;
+//            case R.id.button:
+//                //卫星地图
+//                mBaiduMap.setMapType(BaiduMap.MAP_TYPE_SATELLITE);
+//                break;
+//            case R.id.buttons:
+//                //普通地图
+//                mBaiduMap.setMapType(BaiduMap.MAP_TYPE_NORMAL);
+//                break;
+//        }
+//    }
+
+    private void setUserMapCenter() {
+        LatLng cenpt = new LatLng(wei,jing);
+        //定义地图状态
+        MapStatus mMapStatus = new MapStatus.Builder()
+                .target(cenpt)
+                .zoom(18)
+                .build();
+        //定义MapStatusUpdate对象，以便描述地图状态将要发生的变化
+        MapStatusUpdate mMapStatusUpdate = MapStatusUpdateFactory.newMapStatus(mMapStatus);
+        //改变地图状态
+        mBaiduMap.setMapStatus(mMapStatusUpdate);
     }
 
 }
