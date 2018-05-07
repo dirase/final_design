@@ -66,6 +66,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             style="@style/AppTheme"
+            android:text="酒店"
             />
 
         <Button
@@ -73,6 +74,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="#80FFFF"
+            android:text="历史订单"
             style="@style/AppTheme"/>
 
         <Button
@@ -80,6 +83,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:text="个人信息"
             style="@style/AppTheme"/>
     </LinearLayout>
 </LinearLayout>

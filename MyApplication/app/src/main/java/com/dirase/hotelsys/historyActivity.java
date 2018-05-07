@@ -78,7 +78,6 @@ public class historyActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
             Log.e("json","error2");
-            resultJson1(url);
         }
     }
 

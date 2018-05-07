@@ -91,9 +91,10 @@ public class hotel_detailActivity extends AppCompatActivity {
             map.put("room_used", jsonObject.getString("room_used"));
             map.put("room_num", jsonObject.getString("room_num"));
             map.put("hotel_level", jsonObject.getString("hotel_level"));
+            map.put("room_things", jsonObject.getString("room_things"));
             mList1.add(jsonObject.getString("room_name"));
             mList2.add(jsonObject.getString("hotel_level"));
-            mList3.add(jsonObject.getString("room_used"));
+            mList3.add(jsonObject.getString("room_things"));
             mList4.add(jsonObject.getString("room_num"));
             mList5.add(hotel_num);
             list.add(map);

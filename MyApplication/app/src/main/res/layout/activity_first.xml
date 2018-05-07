@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     >
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -13,18 +14,17 @@
             android:id="@+id/first_edittext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            />
+            android:layout_weight="1" />
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+        <ImageButton
             android:id="@+id/first_search"
-            android:layout_weight="3"
-            android:text="search"/>
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:layout_weight="8"
+            android:background="@drawable/search"
+            android:text="search" />
 
     </LinearLayout>
-
 
 
     <LinearLayout
@@ -85,6 +85,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:background="#80FFFF"
+        android:text="酒店"
         style="@style/AppTheme"
         />
 
@@ -92,15 +94,16 @@
         android:id="@+id/first_button2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="历史订单"
         android:layout_weight="1"
         style="@style/AppTheme"/>
 
         <Button
             android:id="@+id/first_button3"
-
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:text="个人中心"
             style="@style/AppTheme"/>
     </LinearLayout>
 </LinearLayout>

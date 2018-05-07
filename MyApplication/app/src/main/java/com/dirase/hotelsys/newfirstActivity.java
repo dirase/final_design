@@ -39,6 +39,7 @@ public class newfirstActivity extends AppCompatActivity {
     private int year, month,day;
     private String date = "";
     private String date1 = "";
+    public static String hotelurl="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -165,13 +166,13 @@ public class newfirstActivity extends AppCompatActivity {
                 if(stars==0){
                     url = firurl+"gethotel2/"+min+"-"+max+"-"+sheng.getText().toString()+"-"+city.getText().toString()+"-"+leixing+"-"+first_view.getText().toString();
                     Intent mintent=new Intent(newfirstActivity.this,first.class);
-                    mintent.putExtra("index",url);
+                    hotelurl =url;
                     startActivity(mintent);
                 }
                 else {
                     url = firurl+"gethotel/"+min+"-"+max+"-"+sheng.getText().toString()+"-"+city.getText().toString()+"-"+stars+"-"+leixing+"-"+first_view.getText().toString();
                     Intent mintent=new Intent(newfirstActivity.this,first.class);
-                    mintent.putExtra("index",url);
+                    hotelurl =url;
                     startActivity(mintent);
                 }
             }

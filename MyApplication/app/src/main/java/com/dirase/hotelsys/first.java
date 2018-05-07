@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,12 +38,14 @@ import java.util.Map;
 
 import static android.R.attr.bitmap;
 import static android.R.attr.id;
+import static com.dirase.hotelsys.newfirstActivity.hotelurl;
 import static java.net.Proxy.Type.HTTP;
 
 public class first extends AppCompatActivity {
 
     private ListView listView;
-    private Button first_button2,first_button3,first_search;
+    private Button first_button2,first_button3;
+    private ImageButton first_search;
     public static String firurl = "http://192.168.0.110:8080/";
     public  String url = firurl+"findHotelInfo/";
     public  String url1 = firurl+"findhotelnum/1";
@@ -64,11 +68,9 @@ public class first extends AppCompatActivity {
         setContentView(R.layout.activity_first);
         first_button2 = (Button)findViewById(R.id.first_button2);
         first_button3 = (Button)findViewById(R.id.first_button3);
-        first_search = (Button)findViewById(R.id.first_search);
+        first_search = (ImageButton)findViewById(R.id.first_search);
         first_edittext = (EditText)findViewById(R.id.first_edittext);
-        Intent intent = getIntent();
-        Bundle bundle = intent.getExtras();
-        newurl = bundle.getString("index");
+        newurl = hotelurl;
         Log.e("newurl",newurl);
         //initList();
 //        final Thread thread = new Thread(new Runnable() {

@@ -45,6 +45,8 @@
             android:id="@+id/admin_room_add"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#02F78E"
+
             android:text="add" />
     </LinearLayout>
 
