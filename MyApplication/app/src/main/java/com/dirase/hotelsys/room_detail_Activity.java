@@ -25,7 +25,7 @@ import static com.dirase.hotelsys.R.id.hotel_hotel_name;
 import static com.dirase.hotelsys.first.firurl;
 
 public class room_detail_Activity extends AppCompatActivity {
-    private TextView room_name,room_level,room_used,settime,personname;
+    private TextView room_name,room_level,room_used,things;
     private Button purchase;
     private String hotel="";
     private String room_class = "";
@@ -43,11 +43,11 @@ public class room_detail_Activity extends AppCompatActivity {
         room_level = (TextView)findViewById(R.id.room_details_level);
         room_used = (TextView)findViewById(R.id.room_details_used);
         purchase = (Button)findViewById(R.id.room_details_purchase);
-        settime = (TextView)findViewById(R.id.history_details_settime);
-        personname = (TextView)findViewById(R.id.history_details_personname);
+        things = (TextView)findViewById(R.id.room_details_things);
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
+                Log.e("findroom",firurl+"findroombynum/"+i);
                 resultJson1(firurl+"findroombynum/"+i);
             }
         });
@@ -72,12 +72,13 @@ public class room_detail_Activity extends AppCompatActivity {
                 Map<String, Object> ma = it.next();
                 hotel = (String)ma.get("from_hotel");
                 Looper.prepare();
-                room_name.setText("房型："+(String)ma.get("room_name"));
+                room_name.setText((String)ma.get("room_name"));
                 //room_level.setText("价格："+(String)ma.get("room_used"));
                 room_class = (String)ma.get("room_name");
-                room_used.setText("价格："+(String)ma.get("hotel_level"));
-                settime.setText("订单创建时间："+(String)ma.get("tips_rateyear")+"年"+(String)ma.get("tips_ratemonth")+"月"+(String)ma.get("tips_rateday")+"日");
-                personname.setText("姓名："+(String)ma.get("tips_personname"));
+                room_used.setText((String)ma.get("hotel_level"));
+                things.setText((String)ma.get("things"));
+                //settime.setText("订单创建时间："+(String)ma.get("tips_rateyear")+"年"+(String)ma.get("tips_ratemonth")+"月"+(String)ma.get("tips_rateday")+"日");
+                //personname.setText("姓名："+(String)ma.get("tips_personname"));
                 if((int)ma.get("room_used")==0){
                     room_level.setText("房间未满，可以使用");
                     purchase.setClickable(true);
@@ -106,10 +107,11 @@ public class room_detail_Activity extends AppCompatActivity {
         map.put("room_used", jsonObject.getInt("room_used"));
         map.put("hotel_level", jsonObject.getString("hotel_level"));
         map.put("from_hotel", jsonObject.getString("from_hotel"));
-        map.put("tips_rateday", jsonObject.getString("tips_rateday"));
-        map.put("tips_ratemonth", jsonObject.getString("tips_ratemonth"));
-        map.put("tips_rateyear", jsonObject.getString("tips_rateyear"));
-        map.put("tips_personname", jsonObject.getString("tips_personname"));
+        map.put("things", jsonObject.getString("room_things"));
+ //       map.put("tips_rateday", jsonObject.getString("tips_rateday"));
+//        map.put("tips_ratemonth", jsonObject.getString("tips_ratemonth"));
+//        map.put("tips_rateyear", jsonObject.getString("tips_rateyear"));
+//        map.put("tips_personname", jsonObject.getString("tips_personname"));
         list.add(map);
         return list;
     }

@@ -14,7 +14,7 @@
         android:layout_gravity="bottom">
 
         <TextView
-            android:text="tips people"
+            android:text="姓名"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -22,7 +22,7 @@
             />
 
         <TextView
-            android:text="tips hotel"
+            android:text="入住酒店"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -30,7 +30,7 @@
             />
 
         <TextView
-            android:text="tips jiage"
+            android:text="价格"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -38,7 +38,7 @@
             />
 
         <TextView
-            android:text="phone"
+            android:text="电话"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"

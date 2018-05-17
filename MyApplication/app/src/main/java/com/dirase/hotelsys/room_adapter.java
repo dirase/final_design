@@ -48,10 +48,10 @@ public class room_adapter extends BaseAdapter {
         ViewHolder viewHolder = null;
         if (view == null) {
             viewHolder = new ViewHolder();
-            view = LayoutInflater.from(mContext).inflate(R.layout.first_listview_item, null);
-            viewHolder.mButton1 = (Button) view.findViewById(R.id.item_btn1);
-            viewHolder.mButton2 = (Button) view.findViewById(R.id.item_btn2);
-            viewHolder.mButton3 = (Button) view.findViewById(R.id.item_btn3);
+            view = LayoutInflater.from(mContext).inflate(R.layout.room_listview_item, null);
+            viewHolder.mButton1 = (Button) view.findViewById(R.id.roomitem_btn1);
+            viewHolder.mButton2 = (Button) view.findViewById(R.id.roomitem_btn2);
+            viewHolder.mButton3 = (Button) view.findViewById(R.id.roomitem_btn3);
             view.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) view.getTag();

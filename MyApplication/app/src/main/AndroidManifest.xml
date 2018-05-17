@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.dirase.hotelsys">
+          package="com.dirase.hotelsys">
 
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     //获取设备网络状态，禁用后无法获取网络状态
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET"/>
     //网络权限，当禁用后，无法进行检索等相关业务
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
     //读取设备硬件信息，统计数据
-    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS"/>
     //读取系统信息，包含系统版本等信息，用作统计
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     //获取设备的网络状态，鉴权所需网络代理
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     //允许sd卡写权限，需写入地图数据，禁用后无法显示地图
-    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
     //获取统计数据
-    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.GET_TASKS"/>
     //鉴权所需该权限获取进程列表
-    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.CAMERA"/>
 
     <application
         android:allowBackup="true"
@@ -30,34 +30,40 @@
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".first" />
-        <activity android:name=".signupactivity" />
-        <activity android:name=".historyActivity" />
-        <activity android:name=".myActivity" />
-        <activity android:name=".hotel_Activity" />
-        <activity android:name=".hotel_detailActivity" />
-        <activity android:name=".room_detail_Activity" />
-        <activity android:name=".history_details_Activity" />
-        <activity android:name=".testActivity" />
-        <activity android:name=".tips_detailsActivity" />
-        <activity android:name=".admin_hotel_Activity" />
-        <activity android:name=".admin_people_Activity" />
-        <activity android:name=".admin_password_Activity" />
-        <activity android:name=".admin_add_room_Activity" />
-        <activity android:name=".admin_rateActivity" />
+        <activity android:name=".first"/>
+        <activity android:name=".signupactivity"/>
+        <activity android:name=".historyActivity"/>
+        <activity android:name=".myActivity"/>
+        <activity android:name=".hotel_Activity"/>
+        <activity android:name=".hotel_detailActivity"/>
+        <activity android:name=".room_detail_Activity"/>
+        <activity android:name=".history_details_Activity"/>
+        <activity android:name=".testActivity"/>
+        <activity android:name=".tips_detailsActivity"/>
+        <activity android:name=".admin_hotel_Activity"/>
+        <activity android:name=".admin_people_Activity"/>
+        <activity android:name=".admin_password_Activity"/>
+        <activity android:name=".admin_add_room_Activity"/>
+        <activity android:name=".admin_rateActivity"/>
+        <activity android:name=".admin_tipsActivity"/>
+        <activity android:name=".changepersonActivity"/>
 
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="YqI76PbUWTmp9ozxcOHpm9t7dROMyQAT" />
+            android:value="YqI76PbUWTmp9ozxcOHpm9t7dROMyQAT"/>
 
-        <activity android:name=".mapActivity" />
-        <activity android:name=".newfirstActivity" />
-        <activity android:name=".hoteladminActivity"></activity>
+        <activity android:name=".mapActivity"/>
+        <activity android:name=".newfirstActivity"/>
+        <activity android:name=".hoteladminActivity"/>
+        <activity android:name=".changepersonActivity">
+        </activity>
+        <activity android:name=".admin_tips_details">
+        </activity>
     </application>
 
 </manifest>

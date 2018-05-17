@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">hotelsys</string>
+    <string name="app_name">酒店预订系统</string>
     <string-array name="spingarr">
         <item>1星</item>
         <item>2星</item>

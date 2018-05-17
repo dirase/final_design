@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.dirase.hotelsys.history_details_Activity">
+                                             xmlns:app="http://schemas.android.com/apk/res-auto"
+                                             xmlns:tools="http://schemas.android.com/tools"
+                                             android:layout_width="match_parent"
+                                             android:layout_height="match_parent"
+                                             tools:context="com.dirase.hotelsys.history_details_Activity">
 
     <ScrollView
         android:layout_width="0dp"
@@ -33,7 +33,7 @@
                     android:textSize="28sp" />
 
                 <TextView
-                    android:id="@+id/history_details_tips_num"
+                    android:id="@+id/details_tips_num"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="#63B8FF"
@@ -54,7 +54,7 @@
                     android:textSize="28dp" />
 
                 <TextView
-                    android:id="@+id/history_details_start_time"
+                    android:id="@+id/details_start_time"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -75,7 +75,7 @@
                     android:textSize="28dp" />
 
                 <TextView
-                    android:id="@+id/history_details_end_time"
+                    android:id="@+id/details_end_time"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -96,7 +96,7 @@
                     android:textSize="28dp" />
 
                 <TextView
-                    android:id="@+id/history_details_room"
+                    android:id="@+id/details_room"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -117,7 +117,7 @@
                     android:textSize="28dp" />
 
                 <TextView
-                    android:id="@+id/history_details_jiage"
+                    android:id="@+id/details_jiage"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -138,7 +138,7 @@
                     android:textSize="28dp" />
 
                 <Button
-                    android:id="@+id/history_details_hotel"
+                    android:id="@+id/details_hotel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#00000000"
@@ -159,7 +159,7 @@
                     android:textSize="28dp" />
 
                 <TextView
-                    android:id="@+id/history_details_personname"
+                    android:id="@+id/details_personname"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -180,7 +180,7 @@
                     android:textSize="28dp" />
 
                 <TextView
-                    android:id="@+id/history_details_settime"
+                    android:id="@+id/details_settime"
                     android:layout_width="match_parent"
                     android:textColor="#63B8FF"
                     android:layout_height="wrap_content"
@@ -188,20 +188,6 @@
                     android:text="创建时间"
                     android:textSize="28dp" />
             </LinearLayout>
-
-            <Button
-                android:id="@+id/history_details_rate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#02F78E"
-                android:text="评价" />
-
-            <Button
-                android:id="@+id/history_details_cancel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#FF0000"
-                android:text="取消订单" />
 
 
         </LinearLayout>

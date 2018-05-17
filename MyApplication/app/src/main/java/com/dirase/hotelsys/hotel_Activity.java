@@ -104,6 +104,7 @@ public class hotel_Activity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent1 = new Intent(hotel_Activity.this,hotel_detailActivity.class);
                 intent1.putExtra("index",""+name);
+                Log.e("findroom","2"+name);
                 intent1.putExtra("num",""+i);
                 startActivity(intent1);
 
@@ -132,6 +133,8 @@ public class hotel_Activity extends AppCompatActivity {
                 Map<String, Object> ma = it.next();
                 Looper.prepare();
                 hotel_hotel_name.setText((String)ma.get("name"));
+                name = (String)ma.get("name");
+                Log.e("findroom","1"+name);
                 hotel_address.setText((String)ma.get("hotel_adress"));
                 hotel_info.setText((String)ma.get("hotel_information"));
                 hotel_hotel_stars.setText((String)ma.get("hotel_stars")+"星级酒店");
@@ -148,7 +151,6 @@ public class hotel_Activity extends AppCompatActivity {
                 jing = (double)ma.get("hotel_jing");
                 wei = (double)ma.get("hotel_wei");
                 Log.e("loca","jingwei:"+jing+" "+wei);
-                name = (String)ma.get("name");
                 hotel_jiage.setText("价格："+ma.get("hotel_min")+"~"+ma.get("hotel_max"));
                 Looper.loop();
             }

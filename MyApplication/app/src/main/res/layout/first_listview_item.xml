@@ -15,6 +15,7 @@
             android:layout_height="wrap_content"
             android:text="01"
             android:background="#00000000"
+            android:textColor="#00FFFF"
             android:layout_weight="1"/>
 
 
@@ -25,12 +26,14 @@
             android:layout_height="wrap_content"
             android:text="01"
             android:background="#00000000"
+            android:textColor="#00FFFF"
             android:layout_weight="1"/>
 
         <Button
             android:id="@+id/item_btn3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="#00FFFF"
             android:background="#00000000"
             android:focusable="false"
             android:text="01" />
@@ -39,6 +42,7 @@
             android:focusable="false"
             android:id="@+id/item_btn4"
             android:layout_width="match_parent"
+            android:textColor="#00FFFF"
             android:layout_height="wrap_content"
             android:text="01"
             android:background="#00000000"
@@ -53,16 +57,18 @@
             android:layout_height="wrap_content"
             android:background="#00000000"
             android:id="@+id/item_btn5"
-            android:text="leixing"
-            android:layout_weight="1"/>
+            android:text="特点"
+            android:layout_weight="1"
+            android:textColor="#7AFEC6"/>
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#00000000"
             android:id="@+id/item_btn6"
-            android:text="tedian"
-            android:layout_weight="1"/>
+            android:text="类型"
+            android:layout_weight="1"
+            android:textColor="#7AFEC6"/>
     </LinearLayout>
 
 

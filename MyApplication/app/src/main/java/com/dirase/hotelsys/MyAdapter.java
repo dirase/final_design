@@ -68,8 +68,13 @@ public class MyAdapter extends BaseAdapter {
         viewHolder.mButton2.setText(mList2.get(i));
         viewHolder.mButton3.setText(mList3.get(i));
         viewHolder.mButton4.setText(mList4.get(i));
-        viewHolder.mButton5.setText(mList5.get(i));
         viewHolder.mButton5.setText(mList6.get(i));
+        if (mList5.get(i).equals("2")){
+            viewHolder.mButton6.setText("休闲酒店");
+        }
+        else {
+            viewHolder.mButton6.setText("商务酒店");
+        }
         viewHolder.mButton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

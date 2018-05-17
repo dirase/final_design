@@ -89,10 +89,11 @@ public class historyActivity extends AppCompatActivity {
             JSONObject jsonObject = jsonArray.getJSONObject(i);
             HashMap<String, Object> map = new HashMap<String, Object>();
             map.put("tips_people", jsonObject.getString("tips_people"));
+            map.put("tips_personname", jsonObject.getString("tips_personname"));
             map.put("tips_hotel", jsonObject.getString("tips_hotel"));
             map.put("tips_num", jsonObject.getString("tips_num"));
             map.put("tips_room", jsonObject.getString("tips_room"));
-            mList1.add(jsonObject.getString("tips_people"));
+            mList1.add(jsonObject.getString("tips_personname"));
             mList2.add(jsonObject.getString("tips_hotel"));
             mList3.add(jsonObject.getString("tips_room"));
             mList4.add(jsonObject.getString("tips_num"));

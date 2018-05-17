@@ -124,14 +124,14 @@ public class history_details_Activity extends AppCompatActivity {
                 Looper.prepare();
                 start_time.setText( (String)ma.get("tips_time_start"));
                 end_time.setText( (String)ma.get("tips_time_stop"));
-                tips_num.setText( "订单号 "+(String)ma.get("tips_num"));
-                tips_room.setText( "电话: "+(String)ma.get("tips_phone"));
-                tips_hotel.setText( "酒店： "+(String)ma.get("tips_hotel"));
+                tips_num.setText( (String)ma.get("tips_num"));
+                tips_room.setText( (String)ma.get("tips_phone"));
+                tips_hotel.setText( (String)ma.get("tips_hotel"));
                 //room_num = (String)ma.get("tips_room");
                 hotel_num = (String)ma.get("tips_hotel");
-                jiage.setText("房型："+(String)ma.get("tips_room"));
-                personname.setText("姓名："+(String)ma.get("tips_personname"));
-                settime.setText("创建时间："+(String)ma.get("tips_rateyear")+"年"+(String)ma.get("tips_ratemonth")+"月"+(String)ma.get("tips_rateday")+"日");
+                jiage.setText((String)ma.get("tips_room"));
+                personname.setText((String)ma.get("tips_personname"));
+                settime.setText((String)ma.get("tips_rateyear")+"年"+(String)ma.get("tips_ratemonth")+"月"+(String)ma.get("tips_rateday")+"日");
                 Looper.loop();
 
             }

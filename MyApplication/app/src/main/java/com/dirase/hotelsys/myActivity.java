@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class myActivity extends AppCompatActivity {
-    Button button1,button2,changepsd,exit;
+    Button button1,button2,changepsd,exit,changeperson;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,6 +16,7 @@ public class myActivity extends AppCompatActivity {
         button1 = (Button)findViewById(R.id.my_button1);
         button2 = (Button)findViewById(R.id.my_button2);
         changepsd = (Button)findViewById(R.id.my_change_password);
+        changeperson= (Button)findViewById(R.id.my_change_info);
         exit = (Button)findViewById(R.id.my_exit);
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,6 +34,12 @@ public class myActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(myActivity.this,admin_password_Activity.class));
+            }
+        });
+        changepsd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(myActivity.this,changepersonActivity.class));
             }
         });
         exit.setOnClickListener(new View.OnClickListener() {

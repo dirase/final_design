@@ -35,7 +35,7 @@
         android:layout_gravity="bottom">
 
         <TextView
-            android:text="hotel adress"
+            android:text="酒店地址"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -43,7 +43,7 @@
             />
 
         <TextView
-            android:text="hotel name"
+            android:text="酒店名称"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -51,14 +51,14 @@
             />
 
         <TextView
-            android:text="hotel phone"
+            android:text="联系电话"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
             />
         <TextView
-            android:text="hotel stars"
+            android:text="星级"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
