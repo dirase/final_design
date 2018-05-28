@@ -19,26 +19,32 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/admin_add_room_back"
-            android:text="back"/>
+            android:text="返回"/>
 
         <EditText
             android:id="@+id/admin_room_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
-            android:text="room name" />
+            android:hint="房型名称" />
 
         <EditText
             android:id="@+id/admin_room_level"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
-            android:text="room level" />
+            android:hint="价格" />
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/admin_add_room_info"
-            android:text="information"
+            android:hint="房间介绍"
+            android:inputType="text"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/admin_add_room_things"
+            android:hint="配置"
             android:inputType="text"/>
 
         <Button
@@ -46,8 +52,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#02F78E"
-
-            android:text="add" />
+            android:text="添加" />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

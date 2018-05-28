@@ -3,25 +3,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    android:layout_weight="7">
+    android:layout_weight="5">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_weight="3"
+        android:layout_weight="2"
         android:id="@+id/rate_text1"
         android:text="hotel"
         android:textSize="18dp"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_weight="3"
+        android:layout_weight="2"
         android:id="@+id/rate_text2"
         android:text="room"
         android:textSize="18dp"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_weight="3"
+        android:layout_weight="2"
         android:id="@+id/rate_text3"
         android:text="star"
         android:textSize="18dp"/>
@@ -43,8 +43,8 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_weight="3"
+        android:layout_weight="2"
         android:id="@+id/rate_delete"
-        android:text="delete"/>
+        android:text="删除"/>
 
 </LinearLayout>

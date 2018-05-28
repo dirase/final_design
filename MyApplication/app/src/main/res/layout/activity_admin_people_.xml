@@ -19,14 +19,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/admin_people_name"
-            android:text="people name"/>
+            android:text="用户名"/>
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#02F78E"
             android:id="@+id/admin_people_delete"
-            android:text="delete"/>
+            android:text="删除"/>
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

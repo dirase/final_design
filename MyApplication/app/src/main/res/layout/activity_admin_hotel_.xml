@@ -19,39 +19,78 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/admin_hotel_name"
-            android:text="hotel name"
+            android:hint="酒店名称"
             android:inputType="text"/>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/admin_hotel_info"
-            android:text="information"
+            android:hint="酒店介绍"
+            android:inputType="text"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/admin_hotel_sheng"
+            android:hint="省"
+            android:inputType="text"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/admin_hotel_city"
+            android:hint="市"
+            android:inputType="text"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/admin_hotel_view"
+            android:hint="地区"
+            android:inputType="text"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/admin_hotel_jing"
+            android:hint="经度"
+            android:inputType="text"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/admin_hotel_wei"
+            android:hint="纬度"
             android:inputType="text"/>
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/admin_hotel_address"
-            android:text="address"
+            android:hint="酒店地址"
             android:inputType="text"/>
+
+        <EditText
+            android:id="@+id/admin_hotel_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="电话"
+            android:inputType="phone"/>
+
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/admin_hotel_phone"
-            android:text="phone"
-            android:inputType="phone"/>
+            android:id="@+id/admin_hotel_star"
+            android:hint="星级"
+            />
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/admin_hotel_add"
             android:background="#02F78E"
-            android:text="add"/>
+            android:text="新增"/>
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/admin_hotel_delete"
             android:background="#FF0000"
-            android:text="delete"/>
+            android:hint="删除"/>
+
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
