@@ -38,6 +38,7 @@ public class admin_rateActivity extends AppCompatActivity {
         this.listView = (ListView) findViewById(R.id.admin_rate_listview);
         listView.setAdapter(adapter);
         back = (Button)findViewById(R.id.admin_rate_back);
+        back.setText("返回");
         adapter.setOnItemDeleteClickListener(new rate_adapter.onItemDeleteListener() {
             @Override
             public void onDeleteClick(int i) {

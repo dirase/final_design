@@ -22,14 +22,16 @@ public class tips_adapter extends BaseAdapter {
     private List<String> mList3 = new ArrayList<>();
     private List<String> mList4 = new ArrayList<>();
     private List<String> mList5 = new ArrayList<>();
+    private List<String> mList6 = new ArrayList<>();
 
-    public tips_adapter(Context context, List<String> list1,List<String> list2,List<String> list3,List<String> list4,List<String> list5) {
+    public tips_adapter(Context context, List<String> list1,List<String> list2,List<String> list3,List<String> list4,List<String> list5,List<String> list6) {
         mContext = context;
         mList1 = list1;
         mList2 = list2;
         mList3 = list3;
         mList4 = list4;
         mList5 = list5;
+        mList6 = list6;
     }
 
     public int getCount() {
@@ -58,7 +60,7 @@ public class tips_adapter extends BaseAdapter {
             viewHolder = (ViewHolder) view.getTag();
         }
         viewHolder.mButton1.setText(mList1.get(i));
-        viewHolder.mButton2.setText(mList2.get(i));
+        viewHolder.mButton2.setText(mList6.get(i));
         viewHolder.mButton3.setText(mList3.get(i));
         viewHolder.mButton4.setText(mList5.get(i));
         viewHolder.mButton1.setOnClickListener(new View.OnClickListener() {

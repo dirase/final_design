@@ -34,8 +34,9 @@ public class admin_tipsActivity extends AppCompatActivity {
     private  List<String> mList3 = new ArrayList<>();
     private  List<String> mList4 = new ArrayList<>();
     private  List<String> mList5 = new ArrayList<>();
+    private  List<String> mList6 = new ArrayList<>();
     private ListView listView;
-    final tips_adapter adapter = new tips_adapter(admin_tipsActivity.this, mList1,mList2,mList3,mList4,mList5);
+    final tips_adapter adapter = new tips_adapter(admin_tipsActivity.this, mList1,mList2,mList3,mList4,mList5,mList6);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +84,7 @@ public class admin_tipsActivity extends AppCompatActivity {
             map.put("tips_people", jsonObject.getString("tips_people"));
             map.put("tips_personname", jsonObject.getString("tips_personname"));
             map.put("tips_hotel", jsonObject.getString("tips_hotel"));
+            map.put("tips_hotelname", jsonObject.getString("tips_hotelname"));
             map.put("tips_num", jsonObject.getString("tips_num"));
             map.put("tips_room", jsonObject.getString("tips_room"));
             mList1.add(jsonObject.getString("tips_personname"));
@@ -90,6 +92,7 @@ public class admin_tipsActivity extends AppCompatActivity {
             mList3.add(jsonObject.getString("tips_room"));
             mList4.add(jsonObject.getString("tips_num"));
             mList5.add(jsonObject.getString("tips_phone"));
+            mList6.add(jsonObject.getString("tips_hotelname"));
             adapter.notifyDataSetChanged();
             list.add(map);
         }

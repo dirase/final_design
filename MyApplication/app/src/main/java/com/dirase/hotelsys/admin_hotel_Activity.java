@@ -16,10 +16,12 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
+import static com.baidu.location.g.j.S;
+import static com.baidu.location.g.j.f;
 import static com.dirase.hotelsys.first.firurl;
 
 public class admin_hotel_Activity extends AppCompatActivity {
-    private EditText name,info,room_num,address,phone;
+    private EditText name,info,address,phone,sheng,city,views,star,jing,wei;
     private Button add,delete;
 
     @Override
@@ -29,17 +31,55 @@ public class admin_hotel_Activity extends AppCompatActivity {
         name=(EditText)findViewById(R.id.admin_hotel_name);
         info=(EditText)findViewById(R.id.admin_hotel_info);
         address=(EditText)findViewById(R.id.admin_hotel_address);
-        phone=(EditText)findViewById(R.id.admin_hotel_phone);
-        add=(Button)findViewById(R.id.admin_hotel_add);
         delete=(Button)findViewById(R.id.admin_hotel_delete);
+        sheng = (EditText)findViewById(R.id.admin_hotel_sheng);
+        city = (EditText)findViewById(R.id.admin_hotel_city);
+        phone = (EditText)findViewById(R.id.admin_hotel_phone);
+        views = (EditText)findViewById(R.id.admin_hotel_view);
+        star = (EditText) findViewById(R.id.admin_hotel_star);
+        add = (Button)findViewById(R.id.admin_hotel_add);
+        jing = (EditText)findViewById(R.id.admin_hotel_jing);
+        wei = (EditText)findViewById(R.id.admin_hotel_wei);
         add.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(final View view) {
                 Thread thread = new Thread(new Runnable() {
                     @Override
                     public void run() {
                         try {
-                            if("OK".equals(readParse(firurl+"addhotel/"+name.getText().toString()+"-"+info.getText().toString()+"-"+address.getText().toString()+"-"+phone.getText().toString()))){
+                            String name1 = name.getText().toString();
+                            String info1 = info.getText().toString();
+                            String address1= address.getText().toString();
+                            String sheng1 = sheng.getText().toString();
+                            String city1 = city.getText().toString();
+                            String views1 = views.getText().toString();
+                            String star1 = star.getText().toString();
+                            String phone1 = phone.getText().toString();
+                            if (name1==null){
+                                name1 = "null";
+                            }
+                            if (info1==null){
+                                name1 = "null";
+                            }
+                            if (address1==null){
+                                name1 = "null";
+                            }
+                            if (sheng1==null){
+                                name1 = "null";
+                            }
+                            if (city1==null){
+                                name1 = "null";
+                            }
+                            if (views1==null){
+                                name1 = "null";
+                            }
+                            if (star1==null){
+                                name1 = "null";
+                            }
+                            if (phone1==null){
+                                name1 = "null";
+                            }
+                            if("OK".equals(readParse(firurl+"addhotel/"+name1+"-"+info1+"-"+address1+"-"+phone1+"-"+sheng1+"-"+city1+"-"+views1+"-"+star1+"-"+jing.getText().toString()+"-"+wei.getText().toString()))){
                                 Intent intent1 = new Intent(admin_hotel_Activity.this,admin_add_room_Activity.class);
                                 intent1.putExtra("index",name.getText().toString());
                                 startActivity(intent1);

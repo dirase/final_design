@@ -19,7 +19,7 @@ import static com.dirase.hotelsys.first.firurl;
 
 public class admin_add_room_Activity extends AppCompatActivity {
     private Button back,add;
-    private EditText room_name,room_level,room_info;
+    private EditText room_name,room_level,room_info,things;
     private String i ="";
 
     @Override
@@ -31,6 +31,7 @@ public class admin_add_room_Activity extends AppCompatActivity {
         room_name = (EditText)findViewById(R.id.admin_room_name);
         room_level = (EditText)findViewById(R.id.admin_room_level);
         room_info = (EditText)findViewById(R.id.admin_add_room_info);
+        things = (EditText)findViewById(R.id.admin_add_room_things);
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         i = bundle.getString("index");
@@ -47,7 +48,7 @@ public class admin_add_room_Activity extends AppCompatActivity {
                     @Override
                     public void run() {
                         try {
-                            if("OK".equals(readParse(firurl+"addroom/"+room_name.getText().toString()+"-"+room_level.getText().toString()+"-"+room_info.getText().toString()+"-"+i))){
+                            if("OK".equals(readParse(firurl+"addroom/"+room_name.getText().toString()+"-"+room_level.getText().toString()+"-"+room_info.getText().toString()+"-"+i+"-"+things.getText().toString()))){
                                 Looper.prepare();
                                 Toast.makeText(admin_add_room_Activity.this,"success",Toast.LENGTH_SHORT).show();
                                 room_name.setText("");

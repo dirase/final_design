@@ -71,11 +71,11 @@ public class newfirstActivity extends AppCompatActivity {
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
                 if(i == R.id.BGroupID) {
                     leixing = 1;
-                    Toast.makeText(getApplicationContext(), "choice: 商务"+ "类型："+leixing,
+                    Toast.makeText(getApplicationContext(), "选择: 商务"+ "类型："+leixing,
                             Toast.LENGTH_SHORT).show();
                 }else if (i == R.id.RGroupID){
                     leixing =2;
-                    Toast.makeText(getApplicationContext(), "choice: 休闲"+ "类型："+leixing,
+                    Toast.makeText(getApplicationContext(), "选择: 休闲"+ "类型："+leixing,
                             Toast.LENGTH_SHORT).show();
                 }
             }

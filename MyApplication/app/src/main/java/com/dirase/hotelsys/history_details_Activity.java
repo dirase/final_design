@@ -126,7 +126,7 @@ public class history_details_Activity extends AppCompatActivity {
                 end_time.setText( (String)ma.get("tips_time_stop"));
                 tips_num.setText( (String)ma.get("tips_num"));
                 tips_room.setText( (String)ma.get("tips_phone"));
-                tips_hotel.setText( (String)ma.get("tips_hotel"));
+                tips_hotel.setText( (String)ma.get("tips_hotelname"));
                 //room_num = (String)ma.get("tips_room");
                 hotel_num = (String)ma.get("tips_hotel");
                 jiage.setText((String)ma.get("tips_room"));
@@ -158,6 +158,7 @@ public class history_details_Activity extends AppCompatActivity {
         map.put("tips_time_stop", jsonObject.getString("tips_time_stop"));
         map.put("tips_phone", jsonObject.getString("tips_phone"));
         map.put("tips_hotel", jsonObject.getString("tips_hotel"));
+        map.put("tips_hotelname", jsonObject.getString("tips_hotelname"));
         map.put("tips_star", jsonObject.getString("tips_star"));
         map.put("tips_room", jsonObject.getString("tips_room"));
         map.put("tips_rateyear", jsonObject.getString("tips_rateyear"));
