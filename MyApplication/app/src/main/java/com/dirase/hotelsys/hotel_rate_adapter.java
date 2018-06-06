@@ -42,20 +42,19 @@ public class hotel_rate_adapter  extends BaseAdapter {
     public View getView(final int i, View view, ViewGroup viewGroup) {
         ViewHolder viewHolder = null;
         if (view == null) {
-            viewHolder = new ViewHolder();
-            view = LayoutInflater.from(mContext).inflate(R.layout.exlistview_item, null);
-            viewHolder.text1 = (TextView) view.findViewById(R.id.ex_text1);
-            viewHolder.text2 = (TextView) view.findViewById(R.id.ex_text2);
+            viewHolder = new ViewHolder();//初始化viewholder
+            view = LayoutInflater.from(mContext).inflate(R.layout.exlistview_item, null);//获取控件
+            viewHolder.text1 = (TextView) view.findViewById(R.id.ex_text1);//获取控件
+            viewHolder.text2 = (TextView) view.findViewById(R.id.ex_text2);//获取控件
             view.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) view.getTag();
         }
         if(!mList1.get(i).equals("0")){
-        viewHolder.text1.setText(mList1.get(i));
+        viewHolder.text1.setText(mList1.get(i));//设置文本
         viewHolder.text2.setText(mList2.get(i));
         }
         return view;
-
     }
 
 

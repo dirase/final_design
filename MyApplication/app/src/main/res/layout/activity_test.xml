@@ -38,7 +38,7 @@
         app:layout_constraintVertical_bias="0.207"
         app:layout_constraintRight_toRightOf="parent"
         android:id="@+id/test_phone"
-        android:text="电话"
+        android:hint="电话"
         app:layout_constraintHorizontal_bias="0.0"
         />
 
@@ -51,7 +51,7 @@
         app:layout_constraintVertical_bias="0.299"
         app:layout_constraintRight_toRightOf="parent"
         android:id="@+id/test_person"
-        android:text="入住人姓名"
+        android:hint="入住人姓名"
         app:layout_constraintHorizontal_bias="1.0"
         />
 
@@ -64,7 +64,7 @@
         app:layout_constraintVertical_bias="0.376"
         app:layout_constraintRight_toRightOf="parent"
         android:id="@+id/test_info"
-        android:text="备注"
+        android:hint="备注"
         app:layout_constraintHorizontal_bias="0.0"
         />
 

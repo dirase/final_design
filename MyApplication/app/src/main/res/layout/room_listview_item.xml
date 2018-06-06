@@ -26,7 +26,7 @@
             android:background="#00000000"
             android:focusable="false"
             android:text="01"
-            android:textColor="#00FFFF"/>
+            android:textColor="#0000FF"/>
 
         <Button
             android:id="@+id/roomitem_btn2"
@@ -36,7 +36,7 @@
             android:background="#00000000"
             android:focusable="false"
             android:text="01"
-            android:textColor="#00FFFF"/>
+            android:textColor="#0000FF"/>
 
         <Button
             android:id="@+id/roomitem_btn3"
@@ -46,7 +46,7 @@
             android:background="#00000000"
             android:focusable="false"
             android:text="01"
-            android:textColor="#00FFFF"/>
+            android:textColor="#0000FF"/>
 
     </LinearLayout>
 

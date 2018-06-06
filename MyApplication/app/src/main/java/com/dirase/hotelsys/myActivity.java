@@ -36,7 +36,7 @@ public class myActivity extends AppCompatActivity {
                 startActivity(new Intent(myActivity.this,admin_password_Activity.class));
             }
         });
-        changepsd.setOnClickListener(new View.OnClickListener() {
+        changeperson.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(myActivity.this,changepersonActivity.class));

@@ -92,7 +92,7 @@
                     android:id="@+id/hotel_jiage"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="jiage"
+                    android:text="价格：100~1000"
                     android:textSize="24dp"
                     />
             </LinearLayout>

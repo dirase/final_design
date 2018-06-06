@@ -58,6 +58,7 @@ public class hotel_Activity extends AppCompatActivity {
     private List<String> mList2 = new ArrayList<>();
     private ImageView hotel_image;
     private ImageView star;
+    public static String room_hotel_name = "";
     private double jing,wei;
     String name ="";
     final hotel_rate_adapter adapter = new hotel_rate_adapter(hotel_Activity.this, mList1,mList2);
@@ -134,6 +135,7 @@ public class hotel_Activity extends AppCompatActivity {
                 Looper.prepare();
                 hotel_hotel_name.setText((String)ma.get("name"));
                 name = (String)ma.get("name");
+                room_hotel_name = name;
                 Log.e("findroom","1"+name);
                 hotel_address.setText((String)ma.get("hotel_adress"));
                 hotel_info.setText((String)ma.get("hotel_information"));

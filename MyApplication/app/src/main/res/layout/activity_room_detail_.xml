@@ -33,7 +33,7 @@
                     android:id="@+id/room_details_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#4DFFFF"
+                    android:textColor="#0000FF"
                     android:text="roomname"
                     android:gravity="center"
                     android:textSize="24dp"
@@ -58,7 +58,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:textColor="#4DFFFF"
+                    android:textColor="#0000FF"
                     android:text="room_level"
                     android:textSize="24dp" />
             </LinearLayout>
@@ -79,7 +79,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="used"
-                    android:textColor="#4DFFFF"
+                    android:textColor="#0000FF"
                     android:textSize="24dp"
                     android:gravity="center"
                 />
@@ -103,7 +103,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="配置"
-                    android:textColor="#4DFFFF"
+                    android:textColor="#0000FF"
                     android:textSize="24dp"
                     android:gravity="center"
                     />

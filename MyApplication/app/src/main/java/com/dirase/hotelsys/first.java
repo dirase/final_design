@@ -98,7 +98,6 @@ public class first extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 startActivity(new Intent(first.this,hotel_Activity.class));
-                Toast.makeText(first.this, "Click item" + i, Toast.LENGTH_SHORT).show();
             }
         });
         //ListView item 中的删除按钮的点击事件
@@ -129,14 +128,16 @@ public class first extends AppCompatActivity {
                     public void run() {
                         Intent intent = new Intent(first.this,hotel_Activity.class);
                         int i = resultJson2(firurl+"findhotelbyname/"+first_edittext.getText().toString());
-                        if(i<=hotel_num&&i>0){
+                        if(i>0){
                             intent.putExtra("index",""+i);
                             Looper.prepare();
                             startActivity(intent);
                             Looper.loop();
                         }
                         else {
+                            Looper.prepare();
                             Toast.makeText(first.this,"null",Toast.LENGTH_SHORT).show();
+                            Looper.loop();
                         }
                     }
                 });
@@ -240,7 +241,6 @@ public class first extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
             Log.e("json","error2");
-            resultJson(url);
         }
         Log.e("json","hotel_room_num result:"+string);
         return string;
@@ -261,7 +261,6 @@ public class first extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
             Log.e("json","error2");
-            resultJson2(url);
         }
         Log.e("json","num result:"+string);
         return string;
@@ -282,7 +281,6 @@ public class first extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
             Log.e("json","error2");
-            resultJson1(url);
         }
         Log.e("json","result:"+string);
         return string;

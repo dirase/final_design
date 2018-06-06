@@ -136,12 +136,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public static String readParse(String urlPath) throws Exception {
-        ByteArrayOutputStream outStream = new ByteArrayOutputStream();
+        ByteArrayOutputStream outStream = new ByteArrayOutputStream();//新建输出流
         byte[] data = new byte[1024];
         int len = 0;
-        URL url = new URL(urlPath);
+        URL url = new URL(urlPath);//初始化URL
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-        conn.connect();
+        conn.connect();//建立连接
         InputStream inStream = conn.getInputStream();
         while ((len = inStream.read(data)) != -1) {
             outStream.write(data, 0, len);

@@ -30,6 +30,7 @@ public class room_detail_Activity extends AppCompatActivity {
     private String hotel="";
     private String room_class = "";
     private String hotel_num = "";
+    private String room_num = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,7 @@ public class room_detail_Activity extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         final String i = bundle.getString("index");
+        room_num = i;
         hotel_num = bundle.getString("num");
         room_name = (TextView)findViewById(R.id.room_details_name);
         room_level = (TextView)findViewById(R.id.room_details_level);
@@ -60,6 +62,7 @@ public class room_detail_Activity extends AppCompatActivity {
                 intent1.putExtra("index",room_class);
                 intent1.putExtra("hotel",hotel);
                 intent1.putExtra("num",hotel_num);
+                intent1.putExtra("room_num",room_num);
                 startActivity(intent1);
             }
         });
@@ -79,11 +82,12 @@ public class room_detail_Activity extends AppCompatActivity {
                 things.setText((String)ma.get("things"));
                 //settime.setText("订单创建时间："+(String)ma.get("tips_rateyear")+"年"+(String)ma.get("tips_ratemonth")+"月"+(String)ma.get("tips_rateday")+"日");
                 //personname.setText("姓名："+(String)ma.get("tips_personname"));
-                if((int)ma.get("room_used")==0){
+                if((int)ma.get("room_used")>0){
                     room_level.setText("房间未满，可以使用");
                     purchase.setClickable(true);
                 } else {
                     room_level.setText("房间已满，不可使用");
+                    purchase.setVisibility(View.GONE);
                     purchase.setClickable(false);
                 }
                 Looper.loop();

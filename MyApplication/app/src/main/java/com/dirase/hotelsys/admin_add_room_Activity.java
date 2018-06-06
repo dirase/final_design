@@ -38,6 +38,7 @@ public class admin_add_room_Activity extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                startActivity(new Intent(admin_add_room_Activity.this,tips_detailsActivity.class));
                 finish();
             }
         });

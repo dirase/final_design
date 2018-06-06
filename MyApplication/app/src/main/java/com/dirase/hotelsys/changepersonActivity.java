@@ -42,6 +42,7 @@ public class changepersonActivity extends AppCompatActivity {
 						}
 					}
 				});
+				thread.start();
 			}
 		});
 	}

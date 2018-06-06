@@ -21,6 +21,7 @@ import java.util.Calendar;
 import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
 import static com.dirase.hotelsys.MainActivity.people_num;
 import static com.dirase.hotelsys.first.firurl;
+import static com.dirase.hotelsys.hotel_Activity.room_hotel_name;
 
 public class testActivity extends AppCompatActivity {
     private Button btn,btn2,confirm;
@@ -30,6 +31,7 @@ public class testActivity extends AppCompatActivity {
     private EditText phone,personname,info;
     private String ratetime = "";
     private String hotel_num ="";
+    private String room_num ="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +48,7 @@ public class testActivity extends AppCompatActivity {
         final String i = bundle.getString("index");
         hotel = bundle.getString("hotel");
         hotel_num = bundle.getString("num");
+        room_num = bundle.getString("room_num");
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -69,7 +72,8 @@ public class testActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         try {
-                            if("OK".equals(readParse(firurl+"addtips/"+date1+"-"+date2+"-"+hotel_num+"-"+people_num+"-"+phone.getText().toString()+"-"+year+"-"+month+"-"+day+"-"+hour+"-"+minute+"-"+personname.getText().toString()+"-"+info.getText().toString()+"-"+i))){
+                            if("OK".equals(readParse(firurl+"addtips/"+date1+"-"+date2+"-"+hotel_num+"-"+people_num+"-"+phone.getText().toString()+"-"+year+"-"+month+"-"+day+"-"+hour+"-"+minute+"-"+personname.getText().toString()+"-"+info.getText().toString()+"-"+i+"-"+room_hotel_name+"-"+room_num))){
+                               startActivity(new Intent(testActivity.this,first.class));
                                 finish();
                             }
                             else {
